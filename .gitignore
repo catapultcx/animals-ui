@@ -1,0 +1,13 @@
+node_modules
+coverage
+.nyc_output
+.idea
+.env
+.npmrc
+.DS_Store
+*.zip
+TESTS-sonar.xml
+.scannerwork
+.terraform
+*.tfstate*
+/public

@@ -1,0 +1,349 @@
+// ==========================================================================
+// Collapse
+// ==========================================================================
+
+@mixin media($size: false, $max-width: false, $min-width: false, $ignore-for-ie: false) {
+  @if $govuk-is-ie8 {
+    @if $size != mobile {
+      @content;
+    }
+  } @else {
+    @if $size == desktop {
+      @media (min-width: 769px) {
+        @content;
+      }
+    } @else if $size == tablet {
+      @media (min-width: 641px) {
+        @content;
+      }
+    } @else if $size == mobile {
+      @media (max-width: 640px) {
+        @content;
+      }
+    } @else if $max-width != false {
+      @media (max-width: $max-width) {
+        @content;
+      }
+    } @else if $min-width != false {
+      @media (min-width: $min-width) {
+        @content;
+      }
+    } @else {
+      @media (min-width: $size) {
+        @content
+      }
+    }
+  }
+}
+
+
+@mixin box-sizing($type) {
+  // http://www.w3.org/TR/css3-ui/#box-sizing
+  // $type can be one of: content-box | padding-box | border-box | inherit
+  -webkit-box-sizing: $type; // Chrome 4.0 to 9.0, Safari 3.1 to 5.0, Mobile Safari 3.2 to 4.3, Android Browser 2.1 to 3.0
+  -moz-box-sizing: $type; // Firefox 2.0 to 28.0, Firefox for Android 26.0 onwards
+  box-sizing: $type;
+}
+
+.font-xsmall {
+
+  a[rel="external"]::after {
+    background-position: right 4px;
+  }
+
+  a[rel="external"]:hover::after {
+    background-position: right -384px;
+  }
+
+}
+
+%contain-floats {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+
+$module: 'collapse';
+
+$gutter: 30px;
+$gutter-one-quarter: $gutter/4;
+$gutter-one-third: $gutter/3;
+$gutter-half: $gutter/2;
+$gutter-two-thirds: $gutter - $gutter-one-third;
+
+.#{$module} {
+  margin-bottom: 40px;
+
+
+  &-item {
+    border-bottom: 1px solid govuk-colour("mid-grey");
+
+    &:first-child {
+      border-top: 1px solid govuk-colour("mid-grey");
+    }
+
+  }
+
+
+  &-cell {
+    display: table-cell;
+    vertical-align: middle;
+
+    &:first-child {
+      width: 60%;
+    }
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+
+
+  &-tag {
+    color: govuk-colour("white");
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.25;
+    padding: 2px 5px 0;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+
+    &-agency {
+      background-color: govuk-colour("light-pink");
+    }
+
+    &-agent {
+      background-color: govuk-colour("pink");
+    }
+
+  }
+
+
+  &-heading {
+    display: table;
+    padding: 12px 0;
+    width: 100%;
+  }
+
+
+  &-title {
+    font-weight: 700;
+  }
+
+
+  &-subtitle {
+    //@include core-16;
+    clear: both;
+    display: block;
+  }
+}
+
+
+// JS Enabled
+
+.js-enabled {
+
+  .#{$module} {
+
+    &-title {
+
+      button {
+        background-color: transparent;
+        border: 0 none;
+        cursor: pointer;
+        display: block;
+        font-size: 1em;
+        line-height: 25px;
+        padding: 0 0 0 25px;
+        position: relative;
+        text-align: left;
+
+        &::-moz-focus-inner {
+          border: 0;
+          padding: 0;
+        }
+
+        &:before {
+          content: '►';
+          position: absolute;
+          left: 0;
+        }
+
+        &[aria-expanded=false] {
+          &:before {
+            content: '►';
+          }
+        }
+
+        &[aria-expanded=true] {
+          &:before {
+            content: '▼';
+          }
+        }
+
+      }
+
+    }
+
+    &-content {
+      padding-left: 25px;
+    }
+
+  }
+
+}
+
+
+// ==========================================================================
+// Collapsibles
+// ==========================================================================
+
+
+$module: 'collapsible';
+
+
+.#{$module} {
+  clear: both;
+  margin-bottom: $gutter;
+
+
+  &-heading {
+    margin-top: em(20);
+
+    &-primary {
+      font-weight: bold;
+    }
+
+    &-secondary {
+      @extend .font-xsmall;
+      color: $govuk-secondary-text-colour;
+      line-height: 25px;
+
+      @include media(tablet) {
+        float: right;
+      }
+
+    }
+
+  }
+
+
+  // With borders
+
+  &-borders {
+
+    .#{$module}-item {
+      border-bottom: 1px solid govuk-colour("mid-grey");
+      padding: 12px 0;
+
+      &:first-child {
+        border-top: 1px solid govuk-colour("mid-grey");
+      }
+
+    }
+  }
+}
+
+
+// JS Enabled
+
+.js-enabled {
+
+  .#{$module} {
+
+    button {
+      background-color: transparent;
+      border: 0 none;
+      cursor: pointer;
+      display: block;
+      font-size: 1em;
+      line-height: 25px;
+      margin: -12px 0;
+      padding: 12px 0;
+      text-align: left;
+      width: 100%;
+
+      &:before {
+        color: $govuk-link-colour;
+        margin-right: .35em;
+      }
+
+      &:hover {
+
+        &:before {
+          color: $govuk-link-hover-colour;
+        }
+
+        .#{$module}-heading {
+
+          &-primary {
+            color: $govuk-link-hover-colour;
+          }
+
+        }
+
+      }
+
+      &[aria-expanded=false] {
+        &:before {
+          content: '►';
+        }
+      }
+
+      &[aria-expanded=true] {
+        &:before {
+          content: '▼';
+        }
+      }
+
+    }
+
+
+    &-heading {
+      margin-top: 0;
+
+      &-primary {
+        color: $govuk-link-colour;
+        font-weight: normal;
+        text-decoration: underline;
+      }
+
+    }
+
+
+    &-content {
+      border-left: 4px solid govuk-colour("mid-grey");
+      margin-top: em(20);
+      padding-left: em(15);
+    }
+
+
+  }
+
+}
+
+
+// ==========================================================================
+// Toggle
+// ==========================================================================
+
+
+.toggle {
+  &-content {
+    @extend %contain-floats;
+    @include box-sizing(border-box);
+    float: left;
+    margin-bottom: $gutter-half;
+    width: 100%;
+
+    @include media(tablet) {
+      margin-bottom: $gutter;
+    }
+  }
+}
+
