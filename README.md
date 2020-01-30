@@ -47,6 +47,10 @@ Developers should install the following on their machines:
 * [Docker](https://docs.docker.com/install)
 * [Docker Compose](https://docs.docker.com/compose/install/)
 
+### View templating 
+
+This project uses [nunjucks](https://mozilla.github.io/nunjucks/) for its view templating.  
+
 ### Commands
 
 ##### Development        
