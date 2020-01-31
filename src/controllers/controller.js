@@ -4,9 +4,9 @@ exports.index = function (req, res) {
 };
 
 exports.login = function (req, res) {
-    res.status(404).send("Page not implemented yet");
+    res.status(200).render('login')
 };
 
 exports.signup = function (req, res) {
-    res.status(404).send("Page not implemented yet");
+    res.status(200).render('signup')
 };

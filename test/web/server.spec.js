@@ -35,17 +35,15 @@ describe('/', function () {
         });
     });
 
-    it('should not load login', function () {
-        return web.get(url + '/login').catch(err => {
-            err.body.should.equal('Page not implemented yet');
-            err.response.statusCode.should.equal(404);
+    it('should load login', function () {
+        return web.get(url + '/login').then(data => {
+            data.includes("Sign in using Government Gateway").should.be.true();
         });
     });
 
-    it('should not load signup', function () {
-        return web.get(url + '/signup').catch(err => {
-            err.body.should.equal('Page not implemented yet');
-            err.response.statusCode.should.equal(404);
+    it('should load signup', function () {
+        return web.get(url + '/signup').then(data => {
+            data.includes("Sign up to Government Gateway").should.be.true();
         });
     });
 

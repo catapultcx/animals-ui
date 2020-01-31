@@ -1,0 +1,66 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="govuk-width-container app-site-width-container">
+    <div class="govuk-grid-row">
+
+        <!--        <div class="govuk-grid-column-full">
+            <h1 class="govuk-heading-xl">Welcome to the GOV.UK service</h1>
+
+            <p style="padding-top: 20px">Use this GOV.UK service to do something</p>
+        </div> -->
+        {% if not user %}
+        <div class="govuk-grid-column-two-thirds">
+            <div class="column-two-thirds" id="skip-target">
+                <h1 class="govuk-heading-xl">Sign in using Government Gateway</h1>
+                <form action="/login/signin/creds" method="POST" id="loginForm">
+                    <input type="hidden" name="tes" value="">
+                    <input type="hidden" name="csrfToken" value="">
+                    <div class="govuk-form-group">
+                        <label for="user_id" class="govuk-label" aria-describedby="user_id-hint">Government Gateway user ID</label>
+                        <span class="govuk-hint" id="user_id-hint">This could be up to 12 characters.</span>
+                        <input type="text" name="user_id" id="user_id" class="form-control govuk-input govuk-input--width-20" value="" maxlength="22" aria-describedby="user_id-hint" autocomplete="username">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label for="password" class="govuk-label form-label">Password</label>
+                        <input type="password" name="password" id="password" class="govuk-input govuk-input--width-20 govuk-input form-control " maxlength="13" autocomplete="current-password">
+                    </div>
+                    <input type="hidden" name="profile">
+                    <div class="form-group">
+                        <button type="submit" class="govuk-button" data-module="govuk-button">
+                            Sign in
+                        </button>
+                    </div>
+                </form>
+                <a id="no-account" href="/signup" data-ga-action="Create-New-Account-Through-BAS" data-ga-category="Sign-In" data-ga-label="HMRC">Create sign in details</a>
+                <h2 class="govuk-heading-l govuk-!-padding-top-4">Problems signing in</h2>
+                <ul class="govuk-list govuk-!-font-size-16">
+                    <li><a href="/login/forgot-password" id="forgotten-password" data-ga-action="Forgot-Password" data-ga-category="Sign-In" data-ga-label="HMRC">I have forgotten my password</a></li>
+                    <li><a href="/login/forgot-userid" id="forgotten-user-id" data-ga-action="Forgot-User-Id" data-ga-category="Sign-In" data-ga-label="HMRC">I have forgotten my Government Gateway user ID</a></li>
+                    <li><a href="/login/forgot-userid-password" id="forgotten-user-id-password" data-ga-action="Forgot-User-Id-And-Password" data-ga-category="Sign-In" data-ga-label="HMRC">I have forgotten my Government Gateway user ID and password</a></li>
+                </ul>
+            </div>
+        </div>
+        {% include "includes/default-aside.html" %} {% else %}
+        <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-m">Services if you have already done something</h2>
+            <p>If you have already done something you can perform the following actions:
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Renew something</li>
+                    <li>Cancel something</li>
+                    <li class="app-disabled">Amend something</li>
+                </ul>
+        </div>
+        {% include "includes/default-aside.html" %}
+        <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-m">Services to do something</h2>
+            <p>If you've not yet done something you can do the following:</p>
+            <nav role="navigation" aria-labelledby="subsection-title">
+                <ul class="govuk-list govuk-!-font-size-16">
+                    <li><a href="#">Do something</a></li>
+                </ul>
+            </nav>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="govuk-width-container app-site-width-container">
+    <div class="govuk-grid-row">
+
+        {% if not user %}
+        <div class="govuk-grid-column-two-thirds">
+            <div class="column-two-thirds" id="skip-target">
+                <h1 class="govuk-heading-xl">Sign up to Government Gateway</h1>
+                <form action="/login/signin/creds" method="POST" id="loginForm">
+                    <input type="hidden" name="tes" value="">
+                    <input type="hidden" name="csrfToken" value="">
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="full-name">
+                            Full name
+                        </label>
+                        <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name" spellcheck="false">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="email">
+                            Email address
+                        </label>
+                        <span id="email-hint" class="govuk-hint">
+    We’ll only use this to send you a receipt
+  </span>
+                        <input class="govuk-input" id="email" name="email" type="email" aria-describedby="email-hint" autocomplete="email" spellcheck="false">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label for="password" class="govuk-label form-label">Create password</label><span id="email-hint" class="govuk-hint">
+    Your password must be least 8 characters
+  </span>
+                        <input type="password" name="password" id="password" class="govuk-input govuk-input--width-20 govuk-input form-control " maxlength="13" autocomplete="current-password">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label for="password" class="govuk-label form-label">Confirm password</label>
+                        <input type="password" name="password" id="password" class="govuk-input govuk-input--width-20 govuk-input form-control " maxlength="13" autocomplete="current-password">
+                    </div>
+                    <input type="hidden" name="profile">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                            <h2 class="govuk-fieldset__heading">
+      What is your address?
+    </h2>
+                        </legend>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="address-line-1">
+                                Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
+                            </label>
+                            <input class="govuk-input" id="address-line-1" name="address-line-1" type="text" autocomplete="address-line1">
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="address-line-2">
+                                <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
+                            </label>
+                            <input class="govuk-input" id="address-line-2" name="address-line-2" type="text" autocomplete="address-line2">
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="address-town">
+                                Town or city
+                            </label>
+                            <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="address-town" type="text" autocomplete="address-level2">
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="address-county">
+                                County
+                            </label>
+                            <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="address-county" type="text">
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="address-postcode">
+                                Postcode
+                            </label>
+                            <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text" autocomplete="postal-code">
+                        </div>
+
+                    </fieldset>
+                    <div class="form-group">
+                        <button type="submit" class="govuk-button" data-module="govuk-button">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% include "includes/default-aside.html" %} {% else %}
+        <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-m">Services if you have already done something</h2>
+            <p>If you have already done something you can perform the following actions:
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Renew something</li>
+                    <li>Cancel something</li>
+                    <li class="app-disabled">Amend something</li>
+                </ul>
+        </div>
+        {% include "includes/default-aside.html" %}
+        <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-m">Services to do something</h2>
+            <p>If you've not yet done something you can do the following:</p>
+            <nav role="navigation" aria-labelledby="subsection-title">
+                <ul class="govuk-list govuk-!-font-size-16">
+                    <li><a href="#">Do something</a></li>
+                </ul>
+            </nav>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
