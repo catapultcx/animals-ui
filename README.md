@@ -47,6 +47,9 @@ Developers should install the following on their machines:
 * [Docker](https://docs.docker.com/install)
 * [Docker Compose](https://docs.docker.com/compose/install/)
 
+Environment variables are defined in the `.env.example` file. This should be copied locally into
+`.env` but NOT commited.
+
 ### View templating 
 
 This project uses [nunjucks](https://mozilla.github.io/nunjucks/) for its view templating.  

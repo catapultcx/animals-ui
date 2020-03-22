@@ -32,24 +32,26 @@ describe('/', function () {
     startServer(done)
   })
 
-  it('should load homepage', function () {
-    return agent.get('/').expect(200).then(data => {
-      data.text.includes('Welcome to the GOV.UK service').should.be.true()
+  it('should get cats', function () {
+    return agent.get('/cats').expect(200).then(data => {
+      data.text.includes('Cats').should.be.true()
     })
   })
 
-  it('should not load login', function () {
-    return agent.get('/login').
-    expect(404).
-    catch(err => {
-      err.body.should.equal('Page not implemented yet')
+  it('should get a cat', function () {
+    return agent.get('/cats/123').expect(200).then(data => {
+      data.text.includes('Cat').should.be.true()
     })
   })
 
-  it('should not load signup', function () {
-    return agent.get('/signup').expect(404).catch(err => {
-      err.body.should.equal('Page not implemented yet')
+  it('should get add cat page', function () {
+    return agent.get('/cats/add').expect(200).then(data => {
+      data.text.includes('Add a Cat').should.be.true()
     })
+  })
+
+  it('should add a cat', function () {
+    return agent.post('/cats').expect(302).send({name: 'Test cat', description: 'Test description'})
   })
 
   afterEach('Teardown', function () {
