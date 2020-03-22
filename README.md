@@ -58,6 +58,7 @@ This project uses [nunjucks](https://mozilla.github.io/nunjucks/) for its view t
 Install the dependencies
 
     npm install grunt -g
+    npm install nyc -g
     npm install
 
 Test

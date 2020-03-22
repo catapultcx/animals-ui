@@ -25,6 +25,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install grunt -g
+    - run: npm install nyc -g
     - run: npm test
       env:
         CI: true
