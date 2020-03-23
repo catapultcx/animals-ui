@@ -39,7 +39,7 @@ docker-compose.yml          | To run the Docker image and all dependencies
 www                         | To start the service
 .gitignore                  | Files to be ignored from SCM
 
-### Prerequisites
+### Prerequisites and setup
 
 Developers should install the following on their machines:
 
@@ -64,7 +64,7 @@ Install the dependencies
     npm install nyc -g
     npm install
 
-Test
+Test (first start `animals-api` service)
 
     npm test
     
