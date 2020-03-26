@@ -7,4 +7,4 @@ RUN npm install
 COPY --chown=app . .
 
 EXPOSE 2997
-CMD [ "npm", "start" ]
+CMD [ "npm", "start", "--host", "0.0.0.0" ]
