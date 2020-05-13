@@ -31,4 +31,12 @@ describe('birds', function () {
     })
   })
 
+
+
+  it('delete bird', function () {
+    return service.delete(created.id).then((data) => {
+      should.not.exist(data)
+    })
+  })
+
 })

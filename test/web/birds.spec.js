@@ -40,6 +40,7 @@ describe('/', function () {
 
   it('should get a bird', function () {
     return agent.get('/birds/123').expect(200).then(data => {
+      
       data.text.includes('Bird').should.be.true()
     })
   })
@@ -53,6 +54,20 @@ describe('/', function () {
   it('should add a bird', function () {
     return agent.post('/birds').expect(302).send({name: 'Test bird', description: 'Test description'})
   })
+
+
+
+  it('should add then delete a bird', function () {
+    // TODO 
+    // need to get an id to delete
+    agent.get('/birds').then(res => {
+      console.log("data", res.text)
+    })
+    
+
+  })
+
+
 
   afterEach('Teardown', function () {
     console.log('Teardown')

@@ -24,6 +24,11 @@
             <td class="govuk-table__cell">{{ bird.description }}</td>
             <td class="govuk-table__cell">
                 <a href="/birds/{{ bird.id }}" class="govuk-link">View</a>
+
+                <!-- new delete button -->
+                <a href="/birds/{{ bird.id }}/delete" class="govuk-link">Delete</a>
+
+
             </td>
         </tr>
 
