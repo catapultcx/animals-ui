@@ -58,16 +58,13 @@ describe('/', function () {
 
 
   it('should add then delete a bird', function () {
-    // TODO 
+    
     // need to get an id to delete
     agent.get('/birds').then(res => {
       console.log("data", res.text)
     })
-    
 
   })
-
-
 
   afterEach('Teardown', function () {
     console.log('Teardown')

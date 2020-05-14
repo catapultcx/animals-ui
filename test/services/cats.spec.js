@@ -25,9 +25,17 @@ describe('cats', function () {
     })
   })
 
-  it('get all cats', function () {
-    return service.all().then((data) => {
-      data.should.have.property('length')
+  it('update cat', function () {
+    created.name.should.eql("Tom")
+    created.name = "Tom2"
+    return service.update(created).then((data) => {
+    data.name.should.eql("Tom2")
+    })
+  })
+
+  it('delete cat', function () {
+    return service.delete(created.id).then((data) => {
+      should.not.exist(data)
     })
   })
 

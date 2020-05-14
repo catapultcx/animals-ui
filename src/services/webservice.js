@@ -22,7 +22,11 @@ class WebService {
     })
   }
 
-
+  update (item) {
+    return this.agent.post(`${this.url}/${id}`).send(item).then((data) => {
+      return data.body
+    })
+  }
 
   delete (id) {
     return this.agent.delete(`${this.url}/${id}`).then((res) => {

@@ -31,7 +31,13 @@ describe('birds', function () {
     })
   })
 
-
+  it('update bird', function () {
+    created.name.should.eql("Tom")
+    created.name = "Tom2"
+    return service.update(created).then((data) => {
+    data.name.should.eql("Tom2")
+    })
+  })
 
   it('delete bird', function () {
     return service.delete(created.id).then((data) => {

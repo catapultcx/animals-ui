@@ -60,4 +60,15 @@ describe('/', function () {
     server = undefined
     app = undefined
   })
+
+
+  it('should add then delete a cat', function () {
+    // TODO 
+    // need to get an id to delete
+    agent.get('/cats').then(res => {
+      console.log("data", res.text)
+    })
+    
+
+  })
 })

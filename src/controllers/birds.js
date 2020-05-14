@@ -29,3 +29,17 @@ exports.delete = function (req, res) {
     res.redirect('/birds')
   })
 }
+
+exports.updatePage = function (req, res) {
+  birds.get(req.params.id).then((data) => {
+    res.render('update-bird', { bird: data })
+  })
+}
+exports.update = function (req, res) {
+  const bird = req.body
+  bird.id = (req.params.id)
+  birds.update(bird).then((data) => {
+    res.redirect('/birds')
+    
+  })
+}

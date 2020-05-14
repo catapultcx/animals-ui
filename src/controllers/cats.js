@@ -20,7 +20,27 @@ exports.addPage = function (req, res) {
 
 exports.add = function (req, res) {
   cats.create(req.body).then(() => {
-    res.redirect('/cats')
+    res.redirect('cats')
   })
+}
+
+exports.delete = function (req, res) {
+  cats.delete(req.params.id).then((data) => {
+    res.redirect('cats')
+  })
+}
+
+exports.updatePage = function (req, res) {
+  cats.get(req.params.id).then((data) => {
+    res.render('update-cat', { cat: data })
+  })
+}
+
+exports.update = function (req, res) {
+  const cat = req.body
+  cat.id = (req.params.id)
+  cats.update(cat).then((data) => {
+    res.redirect('/cats')
+})
 }
 
