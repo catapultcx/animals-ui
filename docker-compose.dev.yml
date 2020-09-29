@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  app:
+    container_name: "gov-express"
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    command: ["./dev.sh", "start"]
+    volumes:
+      - ./:/home/app
+    ports:
+      - "2997:2997"

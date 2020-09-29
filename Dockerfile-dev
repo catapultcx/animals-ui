@@ -1,0 +1,8 @@
+FROM catapultcx/node
+
+USER root
+
+RUN npm install grunt -g && \
+  npm install nyc -g
+
+USER app
