@@ -13,4 +13,5 @@ TESTS-sonar.xml
 /public
 .npm
 .config
+.bash_history
 package-lock.json

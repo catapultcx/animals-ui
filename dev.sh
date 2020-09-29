@@ -1,6 +1,12 @@
 #!/bin/bash
 
 case "$1" in
+  "shell")
+    docker exec -it gov-express bash
+  ;;
+  "test")
+    docker exec -it gov-express bash -c "npm run test"
+  ;;
   "start")
     if [ ! -d "node_modules" ]; then
       npm install
