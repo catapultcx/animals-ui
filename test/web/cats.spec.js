@@ -54,6 +54,10 @@ describe('/', function () {
     return agent.post('/cats').expect(302).send({name: 'Test cat', description: 'Test description'})
   })
 
+  it('should get add cat page', function () {
+    return agent.post('/cats/123').expect(302).send({name: 'Test cat updated', description: 'Test description updated'})
+  })
+
   afterEach('Teardown', function () {
     console.log('Teardown')
     server.close()

@@ -25,6 +25,14 @@ describe('cats', function () {
     })
   })
 
+  it('update a cat', function () {
+    return service.update(created.id, created).then((data) => {
+      data.name.should.eql(data.name)
+      data.id.should.eql(created.id)
+      data.description.should.eql(data.description)
+    })
+  })
+
   it('get all cats', function () {
     return service.all().then((data) => {
       data.should.have.property('length')
