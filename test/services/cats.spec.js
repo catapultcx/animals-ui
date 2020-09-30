@@ -33,6 +33,12 @@ describe('cats', function () {
     })
   })
 
+  it('delete a cat', function () {
+    return service.delete(created.id).then((data) => {
+      data.should.eql({});
+    })
+  })
+
   it('get all cats', function () {
     return service.all().then((data) => {
       data.should.have.property('length')

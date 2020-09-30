@@ -54,8 +54,12 @@ describe('/', function () {
     return agent.post('/cats').expect(302).send({name: 'Test cat', description: 'Test description'})
   })
 
-  it('should get add cat page', function () {
-    return agent.post('/cats/123').expect(302).send({name: 'Test cat updated', description: 'Test description updated'})
+  it('should update a cat', function () {
+    return agent.post('/cats/edit/123').expect(302).send({name: 'Test cat editted', description: 'Test description eddited'})
+  })
+
+  it('should delete a cat', function () {
+    return agent.post('/cats/remove/123').expect(302)
   })
 
   afterEach('Teardown', function () {
