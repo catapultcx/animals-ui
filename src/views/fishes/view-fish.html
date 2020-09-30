@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="govuk-width-container app-site-width-container">
+
+    <h1 class="govuk-heading-l">Fish</h1>
+    
+    <form method="post">
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="name">
+                Name
+            </label>
+            <input class="govuk-input" id="name" name="name" type="text" spellcheck="false" value="{{ fish.name }}" required>
+        </div>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="description">
+                Description
+            </label>
+            <input class="govuk-input" id="description" name="description" type="text" spellcheck="false" value="{{ fish.description }}" required>
+        </div>
+
+        <button class="govuk-button" type="submit" formaction="/fishes/edit/{{ fish.id }}">Save changes</button>
+        <button class="govuk-button govuk-button--warning" type="submit" formaction="/fishes/remove/{{ fish.id }}">Delete record</button>
+
+    </form>
+</div>
+{% endblock %}
