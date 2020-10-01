@@ -7,6 +7,7 @@ const formData = require('express-form-data')
 const index = require('./routes/index')
 const cats = require('./routes/cats')
 const fishes = require('./routes/fishes')
+const search = require('./routes/search')
 const govkukFrontendPath = require.resolve('govuk-frontend/package.json')
 const nunjucks = require('nunjucks')
 
@@ -32,5 +33,6 @@ app.use('/public', express.static(path.join(__dirname, '../public')))
 app.use('/', index)
 app.use('/cats', cats)
 app.use('/fishes', fishes)
+app.use('/search', search)
 
 module.exports = app

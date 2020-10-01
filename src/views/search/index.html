@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="govuk-width-container app-site-width-container">
+
+    <h1 class="govuk-heading-l">Search Animal</h1>
+    
+    <form action="/search" method="post">
+        <div class="govuk-form-group">
+            <input class="govuk-input" id="name" name="query" type="text" spellcheck="false" required>
+        </div>
+
+        <button class="govuk-button" type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}

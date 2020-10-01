@@ -33,6 +33,12 @@ class WebService {
       return data.body
     })
   }
+
+  search (query) {
+    return this.agent.get(`${this.url}/${query}`).then((data) => {
+      return data.body
+    })
+  }
 }
 
 module.exports = WebService
