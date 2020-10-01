@@ -8,7 +8,6 @@ exports.searchPage = function (req, res) {
 
 exports.search = function (req, res) {
   search.search(req.body.query).then((data) => {
-    console.log(data);
     res.render('search/result', { animals: data })
   })
 };
