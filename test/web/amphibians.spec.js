@@ -55,6 +55,10 @@ describe('/', function () {
         })
     })
 
+    it('should delete an amphibian', function() {
+        return agent.get('/amphibians/delete/456').expect(302)
+    })
+
     afterEach('Teardown', function () {
         console.log('Teardown')
         server.close()

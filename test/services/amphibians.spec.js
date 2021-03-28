@@ -22,11 +22,18 @@ describe('cats', function () {
             data.should.have.property('length')
         })
     })
+
     it('get a created amphibian', function () {
         return service.get(created.id).then((data) => {
             data.name.should.eql(data.name)
             data.id.should.eql(data.id)
             data.description.should.eql(data.description)
+        })
+    })
+
+    it('should delete an amphibian', function() {
+        return service.delete(created.id).then((data) => {
+            data.should.eql(204)
         })
     })
 })
