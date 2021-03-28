@@ -4,7 +4,7 @@ const amphibians = new Amphibians(process.env.API_URL)
 
 exports.all = function (req, res) {
     amphibians.all().then((data) => {
-        res.render('amphibians', { amphibians: data})
+        res.render('amphibians', {amphibians: data})
     })
 }
 
@@ -27,6 +27,13 @@ exports.add = function (req, res) {
 exports.delete = function (req, res) {
     amphibians.delete(req.params.id).then(() => {
         res.redirect('/amphibians');
+    })
+}
+
+
+exports.update = function (req, res) {
+    amphibians.update(req.params.id, req.body).then((data) => {
+        res.render('view-amphibian', {amphibian: data})
     })
 }
 

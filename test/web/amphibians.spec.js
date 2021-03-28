@@ -59,6 +59,12 @@ describe('/', function () {
         return agent.get('/amphibians/delete/456').expect(302)
     })
 
+    it('should update an amphibian', function() {
+        return agent.post('/amphibians/update/456').send({name: 'Test amphibian2', description: 'Test description2'}).expect(200).then(data => {
+            data.text.includes('Amphibian').should.be.true()
+        })
+    })
+
     afterEach('Teardown', function () {
         console.log('Teardown')
         server.close()

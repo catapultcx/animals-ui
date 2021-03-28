@@ -7,4 +7,5 @@ router.get('/add', amphibians.addPage)
 router.get('/:id', amphibians.get)
 router.post('/', amphibians.add)
 router.get('/delete/:id', amphibians.delete)
+router.post('/update/:id', amphibians.update)
 module.exports = router

@@ -25,7 +25,13 @@ class WebService {
   delete (id) {
     return this.agent.delete(`${this.url}/${id}`).then((data) => {
       return data.status
-    });
+    })
+  }
+
+  update (id, item) {
+    return this.agent.put(`${this.url}/${id}`).send(item).then((data) => {
+      return data.body
+    })
   }
 }
 
