@@ -5,20 +5,34 @@
 
     <h1 class="govuk-heading-l">Cat</h1>
 
-    <table class="govuk-table">
-        <caption class="govuk-table__caption">Cat</caption>
-        <tbody class="govuk-table__body">
+    <form action="/cats/update/{{cat.id}}" method="post">
 
-        <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Name</th>
-            <td class="govuk-table__cell">{{ cat.name }}</td>
-        </tr>
+        <table class="govuk-table">
+            <caption class="govuk-table__caption">Cat</caption>
+            <tbody class="govuk-table__body">
+            <div class="govuk-form-group">
 
-        <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Description</th>
-            <td class="govuk-table__cell">{{ cat.description }}</td>
-        </tr>
-        </tbody>
-    </table>
+                <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Name</th>
+                    <td class="govuk-table__cell">
+                        <input type="text" class="govuk-input" id="name" name="name"
+                               value="{{cat.name}}"/>
+                    </td>
+                </tr>
+            </div>
+            <div class="govuk-form-group">
+
+                <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Description</th>
+                    <td class="govuk-table__cell">
+                        <input type="text" class="govuk-input" id="description" name="description"
+                               value="{{cat.description}}"/>
+                    </td>
+                </tr>
+            </div>
+            </tbody>
+        </table>
+        <button class="govuk-button" type="submit">Update</button>
+    </form>
 </div>
 {% endblock %}

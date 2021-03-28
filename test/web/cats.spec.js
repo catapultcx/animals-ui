@@ -54,6 +54,11 @@ describe('/', function () {
     return agent.post('/cats').expect(302).send({name: 'Test cat', description: 'Test description'})
   })
 
+  it('should update an cat', function() {
+    return agent.post('/cats/update/456').send({name: 'Test cat2', description: 'Test cat2'}).expect(200).then(data => {
+      data.text.includes('Cat').should.be.true()
+    })
+  })
   afterEach('Teardown', function () {
     console.log('Teardown')
     server.close()

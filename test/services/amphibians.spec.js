@@ -34,9 +34,8 @@ describe('cats', function () {
     it ('should update an amphibian', function() {
         let update = {name: 'Test Amphibian 2', description: 'An amphibian that tests 2'}
         return service.update(created.id, update).then((data) => {
-            console.log(data)
             data.name.should.eql(update.name)
-            data.should.have.property('id')
+            data.id.should.eql(created.id)
             data.description.should.eql(data.description)
         })
     })
