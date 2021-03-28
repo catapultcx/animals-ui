@@ -11,7 +11,7 @@ let app
 let agent
 
 function startServer(done) {
-    let port = process.env.PORT || '2998'
+    let port = process.env.PORT || '2999'
     app = require('../../src/app')
     decache('../../src/app')
     app.set('port', port)
@@ -34,5 +34,31 @@ describe('/', function () {
 
     it('should add an amphibian', function () {
         return agent.post('/amphibians').expect(302).send({name: 'Test amphibian', description: 'Test description'})
+    })
+
+    it('should get add cat page', function () {
+        return agent.get('/amphibians/add').expect(200).then(data => {
+            data.text.includes('Add an Amphibian').should.be.true()
+        })
+    })
+
+
+    it('should get amphibians', function () {
+        return agent.get('/amphibians').expect(200).then(data => {
+            data.text.includes('Amphibians').should.be.true()
+        })
+    })
+
+    it('should get an amphibian', function () {
+        return agent.get('/amphibians/456').expect(200).then(data => {
+            data.text.includes('Amphibian').should.be.true()
+        })
+    })
+
+    afterEach('Teardown', function () {
+        console.log('Teardown')
+        server.close()
+        server = undefined
+        app = undefined
     })
 })

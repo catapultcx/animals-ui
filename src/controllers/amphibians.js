@@ -3,12 +3,14 @@ const Amphibians = require('../services/amphibians')
 const amphibians = new Amphibians(process.env.API_URL)
 
 exports.all = function (req, res) {
-    res.render('add-amphibian')
+    amphibians.all().then((data) => {
+        res.render('amphibians', { amphibians: data})
+    })
 }
 
 exports.get = function (req, res) {
     amphibians.get(req.params.id).then((data) => {
-        res.render('view-amphibian', {cat: data})
+        res.render('view-amphibian', {amphibian: data})
     })
 }
 
