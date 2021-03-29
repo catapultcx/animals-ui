@@ -54,6 +54,8 @@ describe('/', function () {
     return agent.post('/crustaceans').expect(302).send({name: 'Test crustacean', description: 'Test description'})
   })
 
+  // Due to time and lack of knowledge in expressjs, I have not written a test for deleting.
+
   afterEach('Teardown', function () {
     console.log('Teardown')
     server.close()

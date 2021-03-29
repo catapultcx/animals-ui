@@ -23,3 +23,10 @@ exports.add = function (req, res) {
     res.redirect('/crustaceans')
   })
 }
+
+exports.delete = function (req, res) {
+  crustaceans.delete(req.params.id).then(() => {
+   res.redirect('/crustaceans')
+  })
+}
+
