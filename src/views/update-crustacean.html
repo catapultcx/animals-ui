@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="govuk-width-container app-site-width-container">
+
+    <h1 class="govuk-heading-l">Update a Crustacean</h1>
+
+    <form action="/crustaceans/{{ crustacean.id }}" method="post">
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="name">
+                Name
+            </label>
+            <input class="govuk-input" id="name" name="name" type="text" spellcheck="false" required value="{{ crustacean.name }}">
+        </div>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="description">
+                 Description
+            </label>
+            <input class="govuk-input" id="description" name="description" type="text" spellcheck="false" required value="{{ crustacean.description }}">
+        </div>
+
+        <button class="govuk-button" type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}

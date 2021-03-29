@@ -30,3 +30,16 @@ exports.delete = function (req, res) {
   })
 }
 
+exports.updatePage = function (req, res) {
+  crustaceans.get(req.params.id).then((data) => {
+      res.render('update-crustacean', { crustacean: data })
+  })
+}
+
+exports.update = function (req, res) {
+  crustaceans.update(req.params.id, req.body).then((data) => {
+       res.redirect('/crustaceans')
+  })
+
+}
+

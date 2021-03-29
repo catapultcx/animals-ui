@@ -33,4 +33,13 @@ describe('crustaceans', function () {
 
   // Due to time and lack of knowledge in expressjs, I have not written a test for deleting.
 
+  it('update a crustacean', function () {
+    created.name = "Other"
+    return service.update(created.id, created).then((data) => {
+      data.name.should.eql(created.name)
+      data.id.should.eql(created.id)
+      data.description.should.eql(created.description)
+    })
+  })
+
 })

@@ -8,7 +8,10 @@
     <table class="govuk-table">
         <caption class="govuk-table__caption">crustacean</caption>
         <tbody class="govuk-table__body">
-        <a class="govuk-button" href="/crustaceans/delete/{{ crustacean.id }}">Delete Crustacean</a>
+        <p>
+          <a class="govuk-button" href="/crustaceans/update/{{ crustacean.id }}">Update Crustacean</a>
+          <a class="govuk-button" href="/crustaceans/delete/{{ crustacean.id }}">Delete Crustacean</a>
+        </p>
         <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Name</th>
             <td class="govuk-table__cell">{{ crustacean.name }}</td>

@@ -56,6 +56,12 @@ describe('/', function () {
 
   // Due to time and lack of knowledge in expressjs, I have not written a test for deleting.
 
+  it('should update a crustacean', function () {
+     return agent.get('/crustaceans/update/123').expect(200).then(data => {
+       data.text.includes('Crustacean').should.be.true()
+     })
+  })
+
   afterEach('Teardown', function () {
     console.log('Teardown')
     server.close()
