@@ -11,3 +11,4 @@ TESTS-sonar.xml
 .terraform
 *.tfstate*
 /public
+package-lock.json
