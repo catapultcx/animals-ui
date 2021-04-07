@@ -14,6 +14,19 @@ exports.get = function (req, res) {
   })
 }
 
+exports.updatePage = function (req, res) {
+  cats.get(req.params.id).then((data) => {
+    res.render('update-cat', {cat: data })
+  })
+}
+
+exports.update = function (req, res) {
+  cats.update(req.params.id, req.body).then(() => {
+    res.redirect('/cats')
+  })
+}
+
+
 exports.addPage = function (req, res) {
   res.render('add-cat')
 }
