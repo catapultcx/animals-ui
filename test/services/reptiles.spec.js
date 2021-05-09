@@ -31,4 +31,10 @@ describe('reptiles', function () {
     })
   })
 
+   it('delete a reptile', function () {
+     return service.delete(created.id).then((data) => {
+       data.should.be.empty()
+     })
+   })
+
 })

@@ -50,6 +50,12 @@ describe('/', function () {
     })
   })
 
+   it('should delete a reptile', function () {
+      return agent.get('/reptiles/delete/123').expect(302).then(data => {
+         data.text.includes('Found. Redirecting to /reptiles').should.be.true()
+      })
+   })
+
   it('should add a reptile', function () {
     return agent.post('/reptiles').expect(302).send({name: 'Test reptile', description: 'Test description'})
   })

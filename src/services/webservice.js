@@ -21,6 +21,12 @@ class WebService {
       return data.body
     })
   }
+
+   delete (id) {
+      return this.agent.delete(`${this.url}/${id}`).then((data) => {
+        return data.body
+      })
+    }
 }
 
 module.exports = WebService
