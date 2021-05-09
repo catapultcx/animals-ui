@@ -51,8 +51,14 @@ describe('/', function () {
   })
 
    it('should delete a reptile', function () {
-      return agent.get('/reptiles/delete/123').expect(302).then(data => {
-         data.text.includes('Found. Redirecting to /reptiles').should.be.true()
+      return agent.get('/reptiles/delete/123').then(data => {
+         data.text.includes('Reptiles').should.be.true()
+      })
+   })
+
+   it('should edit a reptile', function () {
+      return agent.post('/reptiles/123').send({name: 'Test reptile 2', description: 'Test description'}).then(data => {
+           data.text.includes('Reptiles').should.be.true()
       })
    })
 

@@ -37,4 +37,13 @@ describe('reptiles', function () {
      })
    })
 
+   it('update a reptile', function () {
+     let item = { name: 'Leo', description: 'Large Leo' }
+      return service.update(item, created.id).then((data) => {
+        data.name.should.eql(item.name)
+        data.description.should.eql(item.description)
+        data.should.have.property('id')
+      })
+   })
+
 })

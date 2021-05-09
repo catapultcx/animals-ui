@@ -14,6 +14,18 @@ exports.get = function (req, res) {
   })
 }
 
+exports.editPage = function (req, res) {
+  reptiles.get(req.params.id).then((data) => {
+    res.render('edit-reptile', { reptile: data })
+  })
+}
+
+exports.edit = function (req, res) {
+ reptiles.update(req.body, req.params.id).then(() => {
+     res.redirect('/reptiles')
+   })
+}
+
 exports.addPage = function (req, res) {
   res.render('add-reptile')
 }
