@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="govuk-width-container app-site-width-container">
+
+    <h1 class="govuk-heading-l">Search Results</h1>
+
+
+    <table class="govuk-table">
+        <caption class="govuk-table__caption">Animals</caption>
+        <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Name</th>
+            <th scope="col" class="govuk-table__header">Type</th>
+            <th scope="col" class="govuk-table__header">Description</th>
+            <th scope="col" class="govuk-table__header"></th>
+        </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+
+        {% for animal in animals %}
+        <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">{{ animal.name }} </th>
+            <td class="govuk-table__cell"><strong class="govuk-tag">
+                {{animal.type}}
+            </strong></td>
+            <td class="govuk-table__cell">{{ animal.description }} </td>
+            <td class="govuk-table__cell">
+                <a href="/{{animal.type}}s/{{ animal.id }}" class="govuk-link">View</a>
+            </td>
+        </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
