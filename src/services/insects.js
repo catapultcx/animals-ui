@@ -8,6 +8,12 @@ class Insects extends WebService {
   delete(id) {
     return this.agent.delete(`${this.url}/${id}`);
   }
+
+  update(id, item) {
+    return this.agent.put(`${this.url}/${id}`).send(item).then((data) => {
+      return data.body
+    });
+  }
 }
 
 module.exports = Insects

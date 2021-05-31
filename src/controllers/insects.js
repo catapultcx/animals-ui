@@ -1,3 +1,5 @@
+
+
 require('dotenv').config()
 const Insects = require('../services/insects')
 const insects = new Insects(process.env.API_URL)
@@ -27,5 +29,17 @@ exports.add = function (req, res) {
 exports.delete = function (req, res) {
   insects.delete(req.params.id).then(() => {
     res.redirect('/insects')
+  })
+}
+
+exports.updatePage = function (req, res) {
+  insects.get(req.params.id).then((data) => {
+    res.render('insect/update', { insect: data })
+  })
+}
+
+exports.update = function (req, res) {
+  insects.update(req.params.id, req.body ).then((data) => {
+    res.redirect('/insects/' + data.id)
   })
 }

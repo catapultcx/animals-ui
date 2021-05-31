@@ -36,4 +36,10 @@ describe('insects', function () {
     })
   })
 
+  it('update an insect', function () {
+    return service.update(123).then(() => {
+    })
+  })
+
+
 })
