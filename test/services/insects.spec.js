@@ -31,4 +31,9 @@ describe('insects', function () {
     })
   })
 
+  it('delete an insect', function () {
+    return service.delete(123).then(() => {
+    })
+  })
+
 })

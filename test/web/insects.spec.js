@@ -44,6 +44,10 @@ describe('/', function () {
     })
   })
 
+  it('should delete an insect', function () {
+    return agent.get('/insects/delete/123').expect(302);
+  })
+
   it('should get add insect page', function () {
     return agent.get('/insects/add').expect(200).then(data => {
       data.text.includes('Add an Insect').should.be.true()

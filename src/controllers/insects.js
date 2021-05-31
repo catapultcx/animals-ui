@@ -24,3 +24,8 @@ exports.add = function (req, res) {
   })
 }
 
+exports.delete = function (req, res) {
+  insects.delete(req.params.id).then(() => {
+    res.redirect('/insects')
+  })
+}
