@@ -22,11 +22,15 @@
         <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">{{ animal.name }} </th>
             <td class="govuk-table__cell"><strong class="govuk-tag">
-                {{animal.type}}
+                {{animal.group}}
             </strong></td>
             <td class="govuk-table__cell">{{ animal.description }} </td>
             <td class="govuk-table__cell">
-                <a href="/{{animal.type}}s/{{ animal.id }}" class="govuk-link">View</a>
+                {% if animal.group == 'INVERTEBRATE' %}
+                <a href="/insects/{{ animal.id }}" class="govuk-link">View</a>
+                {% else %}
+                <a href="/cats/{{ animal.id }}" class="govuk-link">View</a>
+                {% endif %}
             </td>
         </tr>
 
