@@ -32,27 +32,26 @@ describe('/', function () {
     startServer(done)
   })
 
-  it('should get cats', function () {
-    return agent.get('/cats').expect(200).then(data => {
-      data.text.includes('Cats').should.be.true()
+  it('should get insects', function () {
+    return agent.get('/insects').expect(200).then(data => {
+      data.text.includes('Insects').should.be.true()
     })
   })
 
-  it('should get a cat', function () {
-    return agent.get('/cats/123').expect(200).then(data => {
-      console.log(data);
-      data.text.includes('Cat').should.be.true()
+  it('should get an insect', function () {
+    return agent.get('/insects/123').expect(200).then(data => {
+      data.text.includes('Insect').should.be.true()
     })
   })
 
-  it('should get add cat page', function () {
-    return agent.get('/cats/add').expect(200).then(data => {
-      data.text.includes('Add a Cat').should.be.true()
+  it('should get add insect page', function () {
+    return agent.get('/insects/add').expect(200).then(data => {
+      data.text.includes('Add an Insect').should.be.true()
     })
   })
 
-  it('should add a cat', function () {
-    return agent.post('/cats').expect(302).send({name: 'Test cat', description: 'Test description'})
+  it('should add an insect', function () {
+    return agent.post('/insects').expect(302).send({name: 'Test insect', description: 'Test description'})
   })
 
   afterEach('Teardown', function () {
