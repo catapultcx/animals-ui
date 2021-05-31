@@ -5,6 +5,7 @@ class Cats extends WebService {
     console.log("Creating using url base", url);
     super(`${url}/cats`)
   }
+
 }
 
 module.exports = Cats

@@ -67,7 +67,7 @@ describe('/', function () {
 
 
   it('should update an insect', function () {
-    return agent.put('/insects/update/123').expect(302).send({name: 'Test insect', description: 'Test description'})
+    return agent.post('/insects/update/123').send({name: 'Test insect', description: 'Test description'}).expect(302);
   })
 
 

@@ -31,4 +31,11 @@ describe('cats', function () {
     })
   })
 
+
+  it('update an cat', function () {
+    let item = { name: 'Tom', description: 'Friend of Jerry' }
+    return service.update(123, item).then(() => {
+    })
+  })
+
 })
