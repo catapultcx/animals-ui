@@ -1,9 +1,19 @@
 version: "3"
 
 services:
+  animals-api:
+    container_name: "api"
+    image: animals-api:1.0.0
+    ports:
+      - "8080:8080"
+
   app:
     container_name: "gov-express"
     build:
       context: .
     ports:
       - "2997:2997"
+    environment:
+      API_URL: http://animals-api:8080/api/1
+    depends_on:
+      - animals-api
