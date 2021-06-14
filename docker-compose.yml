@@ -1,9 +1,11 @@
-version: "3"
+version: "3.9"
 
 services:
   animals-api:
     container_name: "api"
-    image: animals-api:1.0.0
+    build:
+      context: ../animals-api
+      dockerfile: ../animals-api/Dockerfile
     ports:
       - "8080:8080"
 
