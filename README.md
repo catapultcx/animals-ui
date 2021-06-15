@@ -85,3 +85,7 @@ The service will be available at http://localhost:2997/
 ### Running animals-api and animals-ui using docker locally
 
     docker-compose -f docker-compose-all.yml up
+    
+### Running Jmeter test ANIMALS-TEST.jmx using command line
+
+    jmeter -n -t ./ANIMALS-TEST.jmx -l ./animals-test-results.jtl
