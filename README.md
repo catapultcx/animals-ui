@@ -76,6 +76,7 @@ Run locally
 
 Prerequisites
   animals-api repo
+     
      1. mvn clean build - to create the .jar file
      2. docker build -t animals-service:latest to build the image
   animals-ui repo
