@@ -14,6 +14,12 @@ exports.get = function (req, res) {
   })
 }
 
+exports.delete = function (req, res) {
+  arachnids.delete(req.params.id).then(() => {
+    res.redirect('/arachnids')
+  })
+}
+
 exports.addPage = function (req, res) {
   res.render('add-arachnid')
 }

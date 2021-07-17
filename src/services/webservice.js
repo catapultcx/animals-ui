@@ -10,6 +10,13 @@ class WebService {
     })
   }
 
+  // This will give a 405 if the underlying web service does not support delete
+  delete (id) {
+    return this.agent.delete(`${this.url}/${id}`).then((data) => {
+      return data.body
+    })
+  }
+
   get (id) {
     return this.agent.get(`${this.url}/${id}`).then((data) => {
       return data.body

@@ -44,6 +44,10 @@ describe('/', function () {
     })
   })
 
+  it('should delete an arachnid', function () {
+    return agent.get('/arachnids/delete/123').expect(302);
+  })
+
   it('should get add arachnid page', function () {
     return agent.get('/arachnids/add').expect(200).then(data => {
       data.text.includes('Add an Arachnid').should.be.true()
