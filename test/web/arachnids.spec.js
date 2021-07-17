@@ -44,10 +44,6 @@ describe('/', function () {
     })
   })
 
-  it('should delete an arachnid', function () {
-    return agent.get('/arachnids/delete/123').expect(302);
-  })
-
   it('should get add arachnid page', function () {
     return agent.get('/arachnids/add').expect(200).then(data => {
       data.text.includes('Add an Arachnid').should.be.true()
@@ -57,6 +53,20 @@ describe('/', function () {
   it('should add an arachnid', function () {
     return agent.post('/arachnids').expect(302).send({name: 'Test spider', description: 'Test description'})
   })
+
+  it('should delete an arachnid', function () {
+    return agent.get('/arachnids/delete/123').expect(302);
+  })
+
+  it('should edit an arachnid', function () {
+    return agent.get('/arachnids/edit/123').expect(200).send({name: 'Test spider', description: 'Test description'})
+  })
+
+  it('should update an arachnid', function () {
+    // TODO how to stage test data?
+    return agent.put('/arachnids/123').expect(404).send({id:123, name: 'Test spider', description: 'Test description'})
+  })
+
 
   afterEach('Teardown', function () {
     console.log('Teardown')

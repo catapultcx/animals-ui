@@ -17,6 +17,16 @@ describe('arachnids', function () {
     })
   })
 
+  it('update an arachnid', function () {
+    let item = { name: 'Spider McSpiderface', description: 'Hairy' }
+    return service.update(item).then((data) => {
+      data.name.should.eql(item.name)
+      data.description.should.eql(item.description)
+      data.should.have.property('id')
+      created = data
+    })
+  })
+
   it('get a created arachnid', function () {
     return service.get(created.id).then((data) => {
       data.name.should.eql(data.name)
