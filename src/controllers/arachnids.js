@@ -30,3 +30,15 @@ exports.add = function (req, res) {
   })
 }
 
+exports.edit = function (req, res) {
+  arachnids.get(req.params.id).then((data) => {
+    res.render('edit-arachnid', { arachnid: data })
+  })
+}
+
+exports.update = function (req, res) {
+  arachnids.update(req.body).then((data) => {
+    res.render('edit-arachnid', { arachnid: data })
+  })
+}
+
