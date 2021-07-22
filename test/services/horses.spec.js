@@ -53,4 +53,10 @@ describe('horses', function () {
     })
   })
 
+  it('get all horses', function () {
+    return service.all().then((data) => {
+      data.should.have.property('length')
+    })
+  })
+
 })

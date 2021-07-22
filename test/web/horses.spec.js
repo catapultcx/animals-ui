@@ -32,6 +32,18 @@ describe('/', function () {
     startServer(done)
   })
 
+  it('should get horses', function () {
+    return agent.get('/horses').expect(200).then(data => {
+      data.text.includes('Horses').should.be.true()
+    })
+  })
+
+  it('should get a horse', function () {
+    return agent.get('/horses/123').expect(200).then(data => {
+      data.text.includes('Horse').should.be.true()
+    })
+  })
+
   it('should get add horse page', function () {
     return agent.get('/horses/add').expect(200).then(data => {
       data.text.includes('Add a Horse').should.be.true()
