@@ -5,12 +5,17 @@ const request = require('supertest')
 const url = 'http://localhost:2999'
 const fs = require('fs')
 const decache = require('decache')
+const Horses = require('../../src/services/horses')
+const service = new Horses(process.env.API_URL)
+const item = { name: 'Spirit', description: 'Stallion of Cimarron' }
 
 let server
 let app
 let agent
+let created
+service.create(item).then((data) => { created = data })
 
-function startServer (done) {
+function startServer(done) {
   let port = process.env.PORT || '2999'
   app = require('../../src/app')
   decache('../../src/app')
@@ -38,8 +43,12 @@ describe('/', function () {
     })
   })
 
+  it('should add a horse', function () {
+    return agent.post('/horses').expect(302).send({ name: 'Test horse', description: 'Test description' })
+  })
+
   it('should get a horse', function () {
-    return agent.get('/horses/123').expect(200).then(data => {
+    return agent.get('/horses/' + created.id).expect(200).then(data => {
       data.text.includes('Horse').should.be.true()
     })
   })
@@ -50,9 +59,10 @@ describe('/', function () {
     })
   })
 
-  it('should add a horse', function () {
-    return agent.post('/horses').expect(302).send({name: 'Test horse', description: 'Test description'})
+  it('should delete a horse', function () {
+    return agent.post('/horses').expect(302).send({ id: created.id })
   })
+
 
   afterEach('Teardown', function () {
     console.log('Teardown')

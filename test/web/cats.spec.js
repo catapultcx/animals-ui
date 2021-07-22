@@ -5,12 +5,17 @@ const request = require('supertest')
 const url = 'http://localhost:2999'
 const fs = require('fs')
 const decache = require('decache')
+const Cats = require('../../src/services/cats')
+const service = new Cats(process.env.API_URL)
+const item = { name: 'Tom', description: 'Friend of Jerry' }
 
 let server
 let app
 let agent
+let created
+service.create(item).then((data) => { created = data })
 
-function startServer (done) {
+function startServer(done) {
   let port = process.env.PORT || '2999'
   app = require('../../src/app')
   decache('../../src/app')
@@ -39,9 +44,9 @@ describe('/', function () {
   })
 
   it('should get a cat', function () {
-    return agent.get('/cats/123').expect(200).then(data => {
-      data.text.includes('Cat').should.be.true()
-    })
+    return agent.get('/cats/'+created.id).expect(200).then(data => {
+        data.text.includes('Cat').should.be.true()
+      })
   })
 
   it('should get add cat page', function () {
@@ -53,7 +58,7 @@ describe('/', function () {
   it('should add a cat', function () {
     return agent.post('/cats').expect(302).send({name: 'Test cat', description: 'Test description'})
   })
-
+  
   afterEach('Teardown', function () {
     console.log('Teardown')
     server.close()

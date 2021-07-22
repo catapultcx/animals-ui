@@ -33,21 +33,21 @@ describe('horses', function () {
   })
 
   it('get create a horse should return error when name is empty', function () {
-    let item = { name:'', description: 'Stallion of Cimarron' }
+    let item = { name: '', description: 'Stallion of Cimarron' }
     return service.create(item).catch((error) => {
       error.status.should.eql(400)
     })
   })
 
   it('get create a horse should return error when description is null', function () {
-    let item = { name: 'Spirit'}
+    let item = { name: 'Spirit' }
     return service.create(item).catch((error) => {
       error.status.should.eql(400)
     })
   })
 
   it('get create a horse should return error when description is empty', function () {
-    let item = { name: 'Spirit', description: ''}
+    let item = { name: 'Spirit', description: '' }
     return service.create(item).catch((error) => {
       error.status.should.eql(400)
     })
@@ -56,6 +56,20 @@ describe('horses', function () {
   it('get all horses', function () {
     return service.all().then((data) => {
       data.should.have.property('length')
+    })
+  })
+
+  it('get a created horse should return error when created id is invalid', function () {
+    return service.get(1).catch((error) => {
+      error.status.should.eql(404)
+    })
+  })
+
+  it('delete a created horse', function () {
+    return service.delete(created.id).then(() => {
+      return service.get(created.id).catch((error) => {
+        error.status.should.eql(404)
+      })
     })
   })
 

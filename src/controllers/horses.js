@@ -18,9 +18,15 @@ exports.addPage = function (req, res) {
   res.render('horses/add-horse')
 }
 
-exports.add = function (req, res) {
-  horses.create(req.body).then(() => {
-    res.redirect('/horses')
-  })
+exports.addOrDelete = function (req, res) {
+  if(req.body.id) {
+    horses.delete(req.body.id).then(() => {
+      res.redirect('/horses')
+    })
+  } else {
+    horses.create(req.body).then(() => {
+      res.redirect('/horses')
+    })
+  }
 }
 
