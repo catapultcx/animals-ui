@@ -21,7 +21,8 @@
             </tbody>
         </table>
         <input type="hidden" name="id" value="{{ horse.id }}"/>
-        <button class="govuk-button" type="submit">Delete</button>
+        <button class="govuk-button" name="deleteOrEdit" type="submit" value="Delete">Delete</button>
+        <button class="govuk-button" name="deleteOrEdit" type="submit" value="Edit">Edit</button>
     </form>
 </div>
 {% endblock %}

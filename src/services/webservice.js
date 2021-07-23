@@ -27,6 +27,12 @@ class WebService {
       return data.body
     })
   }
+
+  update (item) {
+    return this.agent.put(this.url).send(item).then((data) => {
+      return data.body
+    })
+  }
 }
 
 module.exports = WebService

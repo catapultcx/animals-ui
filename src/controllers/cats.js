@@ -18,9 +18,19 @@ exports.addPage = function (req, res) {
   res.render('add-cat')
 }
 
-exports.add = function (req, res) {
-  cats.create(req.body).then(() => {
-    res.redirect('/cats')
-  })
+exports.addOrEdit = function (req, res) {
+  if(req.body.edit==='Edit') {
+    cats.get(req.body.id).then((data) => {
+      res.render('edit-cat', { cat: data })
+    })
+  } else if(req.body.id) {
+    cats.update(req.body).then(() => {
+      res.redirect('/cats')
+    })
+  } else {
+    cats.create(req.body).then(() => {
+      res.redirect('/cats')
+    })
+  }
 }
 

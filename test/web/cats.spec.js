@@ -58,7 +58,17 @@ describe('/', function () {
   it('should add a cat', function () {
     return agent.post('/cats').expect(302).send({name: 'Test cat', description: 'Test description'})
   })
-  
+
+  it('should get edit cat page', function () {
+    return agent.post('/cats').expect(200).send({ edit: 'Edit', id: created.id }).then(data => {
+      data.text.includes('Edit a Cat').should.be.true()
+    })
+  })
+
+  it('should edit a cat', function () {
+    return agent.post('/cats').expect(302).send({ id: created.id, name: 'Spirit', description: 'Rebellion of Cimarron' })
+  })
+
   afterEach('Teardown', function () {
     console.log('Teardown')
     server.close()

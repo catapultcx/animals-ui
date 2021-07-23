@@ -18,9 +18,17 @@ exports.addPage = function (req, res) {
   res.render('horses/add-horse')
 }
 
-exports.addOrDelete = function (req, res) {
-  if(req.body.id) {
+exports.addOrDeleteOrEdit = function (req, res) {
+  if(req.body.deleteOrEdit==='Delete') {
     horses.delete(req.body.id).then(() => {
+      res.redirect('/horses')
+    })
+  } else if(req.body.deleteOrEdit==='Edit') {
+    horses.get(req.body.id).then((data) => {
+      res.render('horses/edit-horse', { horse: data })
+    })
+  } else if(req.body.id) {
+    horses.update(req.body).then(() => {
       res.redirect('/horses')
     })
   } else {
@@ -29,4 +37,5 @@ exports.addOrDelete = function (req, res) {
     })
   }
 }
+
 

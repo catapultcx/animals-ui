@@ -4,21 +4,25 @@
 <div class="govuk-width-container app-site-width-container">
 
     <h1 class="govuk-heading-l">Cat</h1>
+    <form action="/cats" method="post">
 
-    <table class="govuk-table">
-        <caption class="govuk-table__caption">Cat</caption>
-        <tbody class="govuk-table__body">
+        <table class="govuk-table">
+            <caption class="govuk-table__caption">Cat</caption>
+            <tbody class="govuk-table__body">
 
-        <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Name</th>
-            <td class="govuk-table__cell">{{ cat.name }}</td>
-        </tr>
+                <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Name</th>
+                    <td class="govuk-table__cell">{{ cat.name }}</td>
+                </tr>
 
-        <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Description</th>
-            <td class="govuk-table__cell">{{ cat.description }}</td>
-        </tr>
-        </tbody>
-    </table>
+                <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Description</th>
+                    <td class="govuk-table__cell">{{ cat.description }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="hidden" name="id" value="{{ cat.id }}" />
+        <button class="govuk-button" name="edit" type="submit" value="Edit">Edit</button>
+    </form>
 </div>
 {% endblock %}

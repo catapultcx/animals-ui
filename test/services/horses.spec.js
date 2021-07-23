@@ -65,6 +65,59 @@ describe('horses', function () {
     })
   })
 
+  it('edit a created horse', function () {
+    created.name = 'Test'
+    return service.update(created).then(() => {
+      return service.get(created.id).then((data) => {
+        data.name.should.eql(created.name)
+      })
+    })
+  })
+
+  it('edit a created horse should return error when name is null', function () {
+    created.name = null
+    return service.update(created).catch((error) => {
+      error.status.should.eql(400)
+    }).finally(() => {
+        service.get(created.id).then((data) => {
+        created = data
+      })
+    })
+  })
+
+  it('edit a created horse should return error when name is empty', function () {
+    created.name = ''
+    return service.update(created).catch((error) => {
+      error.status.should.eql(400)
+    }).finally(() => {
+        service.get(created.id).then((data) => {
+        created = data
+      })
+    })
+  })
+
+  it('edit a created horse should return error when description is null', function () {
+    created.description = null
+    return service.update(created).catch((error) => {
+      error.status.should.eql(400)
+    }).finally(() => {
+        service.get(created.id).then((data) => {
+        created = data
+      })
+    })
+  })
+
+  it('edit a created horse should return error when description is empty', function () {
+    created.description = ''
+    return service.update(created).catch((error) => {
+      error.status.should.eql(400)
+    }).finally(() => {
+        service.get(created.id).then((data) => {
+        created = data
+      })
+    })
+  })
+
   it('delete a created horse', function () {
     return service.delete(created.id).then(() => {
       return service.get(created.id).catch((error) => {

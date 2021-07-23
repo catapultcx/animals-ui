@@ -59,8 +59,18 @@ describe('/', function () {
     })
   })
 
+  it('should get edit horse page', function () {
+    return agent.post('/horses').expect(200).send({ deleteOrEdit: 'Edit', id: created.id }).then(data => {
+      data.text.includes('Edit a Horse').should.be.true()
+    })
+  })
+
+  it('should edit a horse', function () {
+    return agent.post('/horses').expect(302).send({ id: created.id, name: 'Spirit', description: 'Rebellion of Cimarron' })
+  })
+
   it('should delete a horse', function () {
-    return agent.post('/horses').expect(302).send({ id: created.id })
+    return agent.post('/horses').expect(302).send({ deleteOrEdit: 'Delete', id: created.id })
   })
 
 
