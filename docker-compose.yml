@@ -2,8 +2,25 @@ version: "3"
 
 services:
   app:
-    container_name: "gov-express"
+    container_name: "frontend"
     build:
       context: .
+    environment:
+      - API_URL=${API_URL}
     ports:
       - "2997:2997"
+    networks:
+      - app-net
+
+  api:
+    container_name: "backend"
+    build:
+      context: ../animals-api/
+    ports:
+      - "8080:8080"
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    driver: bridge
