@@ -29,7 +29,6 @@
     "gulp-footer": "^2.0.2",
     "gulp-json-editor": "^2.5.4",
     "gulp-nodemon": "^2.4.2",
-    "gulp-nunjucks": "^5.0.1",
     "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.0",
