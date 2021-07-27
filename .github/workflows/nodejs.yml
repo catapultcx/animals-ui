@@ -13,6 +13,13 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      API_URL: http://localhost:8080/api/1
+    services:
+      animals-api:
+        image: catapultcx/animals-api:latest
+        ports:
+          - 8080:8080
 
     strategy:
       matrix:
