@@ -24,3 +24,9 @@ exports.add = function (req, res) {
   })
 }
 
+exports.remove = function (req, res) {
+  horses.delete(req.params.id).then(() => {
+    res.redirect('/horses')
+  })
+}
+

@@ -4,21 +4,23 @@
 <div class="govuk-width-container app-site-width-container">
 
     <h1 class="govuk-heading-l">Horse</h1>
+    <form action="/horses/{{ horse.id }}" method="delete">
+        <table class="govuk-table">
+            <caption class="govuk-table__caption">Horse</caption>
+            <tbody class="govuk-table__body">
 
-    <table class="govuk-table">
-        <caption class="govuk-table__caption">Horse</caption>
-        <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Name</th>
+                <td class="govuk-table__cell">{{ horse.name }}</td>
+            </tr>
 
-        <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Name</th>
-            <td class="govuk-table__cell">{{ horse.name }}</td>
-        </tr>
-
-        <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Description</th>
-            <td class="govuk-table__cell">{{ horse.description }}</td>
-        </tr>
-        </tbody>
-    </table>
+            <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Description</th>
+                <td class="govuk-table__cell">{{ horse.description }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <button class="govuk-button" type="submit">Delete</button>
+    </form>
 </div>
 {% endblock %}

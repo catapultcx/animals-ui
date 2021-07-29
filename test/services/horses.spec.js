@@ -31,4 +31,12 @@ describe('horses', function () {
         })
     })
 
+    it('delete a created horse', function () {
+        return service.delete(created.id).then((data) => {
+            data.name.should.eql(data.name)
+            data.id.should.eql(data.id)
+            data.description.should.eql(data.description)
+        })
+    })
+
 })

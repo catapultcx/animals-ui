@@ -52,6 +52,12 @@ describe('/', function () {
     return agent.post('/horses').expect(302).send({name: 'Test horse', description: 'Test description'})
   })
 
+  it('should remove a horse', function () {
+    return agent.delete('/horses/123').expect(202).then(data => {
+      console.log(data)
+    })
+  })
+
   afterEach('Teardown', function () {
     console.log('Teardown')
     server.close()

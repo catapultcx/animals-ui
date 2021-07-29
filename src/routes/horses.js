@@ -6,5 +6,6 @@ router.get('/', horses.all)
 router.get('/add', horses.addPage)
 router.get('/:id', horses.get)
 router.post('/', horses.add)
+router.delete('/:id', horses.remove)
 
 module.exports = router
