@@ -77,6 +77,18 @@ Run locally
 Run locally
 
     docker-compose up
+
+Run UI from Docker Hub
+
+    docker run --rm -p 2997:2997 -d --env API_URL=http://<YOUR_NETWORK_IP>:8080/api/1 catapultcx/animals-ui:latest
+
+Run API from Docker Hub
+
+    docker run --rm -p 8080:8080 -d catapultcx/animals-api:latest
+
+Publish to Docker Hub
+
+    ./docker.sh
     
 ### Accessing locally
 
