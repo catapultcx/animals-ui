@@ -93,3 +93,13 @@ Publish to Docker Hub
 ### Accessing locally
 
 The service will be available at http://localhost:2997/
+
+### Running Cypress tests
+To Run on browser
+
+    npm run cypress:run-browser
+
+    
+To Run in headless mode
+  
+    cypress:run-headless
