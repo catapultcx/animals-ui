@@ -1,6 +1,6 @@
 // assuming the cat id is not changing on cat page url
 // otherwise would have clicked view or used cypress mock fixture
-describe('test all cats page', () => {
+describe('testing cat page', () => {
     before(() => {
         cy.visit('/cats/7bac379d-df55-454e-8bb8-43a4917a6ab6')
     })

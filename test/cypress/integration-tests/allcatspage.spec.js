@@ -1,4 +1,4 @@
-describe('test all cats page', () => {
+describe('testing all cats page', () => {
     before(() => {
         cy.visit('/cats')
     })

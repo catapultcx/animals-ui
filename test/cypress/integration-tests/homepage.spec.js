@@ -1,4 +1,4 @@
-describe('test homepage', () =>{
+describe('testing homepage', () =>{
     before(() =>{
         cy.visit('')
     })
