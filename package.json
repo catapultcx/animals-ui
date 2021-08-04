@@ -6,7 +6,10 @@
     "test": "nyc --reporter=lcov --reporter=text mocha --timeout 15000 ./**/*.spec.js",
     "test-mocha": "mocha ./**/*.spec.js",
     "test-html": "nyc --reporter=html --reporter=text mocha --timeout 15000 ./**/*.spec.js",
-    "start": "gulp build && node ./src/bin/www"
+    "start": "gulp build && node ./src/bin/www",
+    "cypress:open": "npx cypress open",
+    "cypress:run-browser": "npx cypress run --headed",
+    "cypress:run-headless": "npx cypress run"
   },
   "dependencies": {
     "dotenv": "^8.2.0",

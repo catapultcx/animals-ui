@@ -14,6 +14,7 @@ describe('testing adding a new cat', () => {
             `${Cypress.config("baseUrl")}/cats/add`)
     })
     it('submitting new cat details', () => {
+        // generating random cat name & description in case there is a constraint on same name
         const uuid = () => Cypress._.random(0, 1e6)
         const random_cat_name = uuid()
         cy.get('#name').type(random_cat_name)
