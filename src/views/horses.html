@@ -22,6 +22,9 @@
         <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">{{ horse.name }}</th>
             <td class="govuk-table__cell">{{ horse.description }}</td>
+            <td class="govuk-table__cell">
+                <a href="/horses/{{ horse.id }}" class="govuk-link">View</a>
+            </td>
         </tr>
 
         {% endfor %}

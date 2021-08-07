@@ -18,3 +18,9 @@ exports.add = function (req, res) {
   })
 }
 
+exports.get = function (req, res) {
+  horses.get(req.params.id).then((data) => {
+    res.render('view-horse', { horse: data })
+  })
+}
+
