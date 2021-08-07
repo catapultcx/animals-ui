@@ -24,3 +24,23 @@ exports.add = function (req, res) {
   })
 }
 
+exports.delete = function (req, res) {
+  cats.delete(req.params.id).then(() => {
+    res.redirect('/cats')
+  })
+}
+
+exports.edit = function (req, res) {
+  cats.get(req.params.id).then((data) => {
+    res.render('edit-cat', { cat: data })
+  })
+}
+
+exports.update = function (req, res) {
+  cats.update(req.params.id, req.body).then(() => {
+    res.redirect('/cats')
+  })
+}
+
+
+

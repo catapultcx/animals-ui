@@ -6,9 +6,15 @@ const url = 'http://localhost:2999'
 const fs = require('fs')
 const decache = require('decache')
 
+const Cats = require('../../src/services/cats')
+const service = new Cats(process.env.API_URL)
+const cat = { name: 'Test Cat', description: 'top cat' }
+
 let server
 let app
 let agent
+let addedCat
+service.create(cat).then((data) => { addedCat = data })
 
 function startServer (done) {
   let port = process.env.PORT || '2999'
@@ -52,6 +58,20 @@ describe('/', function () {
 
   it('should add a cat', function () {
     return agent.post('/cats').expect(302).send({name: 'Test cat', description: 'Test description'})
+  })
+
+  it('should delete a cat', function () {
+    return agent.get('/cats/delete/123').expect(302)
+  })
+
+  it('should get edit a cat page', function () {
+    return agent.get('/cats/edit/123').expect(200).send({ name: 'TopCat' , id: addedCat.id }).then(data => {
+      data.text.includes('Edit a Cat').should.be.true()
+    })
+  })
+
+  it('should update a cat', function () {
+    return agent.post('/cats/update/123').expect(302).send({ id:'123', name: 'TopCat' , description: 'Edited' })
   })
 
   afterEach('Teardown', function () {
