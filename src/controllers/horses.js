@@ -24,3 +24,9 @@ exports.get = function (req, res) {
   })
 }
 
+exports.delete = function (req, res) {
+  horses.delete(req.params.id).then(() => {
+    res.redirect('/horses')
+  })
+}
+

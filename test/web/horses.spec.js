@@ -38,6 +38,12 @@ describe('/', function () {
     })
   })
 
+  it('should get a horse', function () {
+    return agent.get('/horses/123').expect(200).then(data => {
+      data.text.includes('Horses').should.be.true()
+    })
+  })
+
   it('should get add horse page', function () {
     return agent.get('/horses/add').expect(200).then(data => {
       data.text.includes('Add a Horse').should.be.true()
@@ -46,6 +52,10 @@ describe('/', function () {
 
   it('should add a horse', function () {
     return agent.post('/horses').expect(302).send({name: 'Black Beauty', description: 'its Beauty'})
+  })
+
+  it('should delete a horse', function () {
+    return agent.get('/horses/delete/123').expect(202)
   })
 
   afterEach('Teardown', function () {
