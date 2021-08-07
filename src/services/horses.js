@@ -1,9 +1,9 @@
 const WebService = require('./webservice')
 
-class Cats extends WebService {
+class Horses extends WebService {
   constructor (url) {
-    super(`${url}/cats`)
+    super(`${url}/horses`)
   }
 }
 
-module.exports = Cats
+module.exports = Horses

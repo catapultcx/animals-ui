@@ -62,7 +62,7 @@ Install the dependencies
 
     npm install grunt -g
     npm install nyc -g
-    npm install
+    npm install --force
 
 Test (first start `animals-api` service)
 
