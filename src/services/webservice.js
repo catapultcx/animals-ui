@@ -27,6 +27,13 @@ class WebService {
       return data.status
     })
   }
+
+  update (id, item) {
+    return this.agent.put(`${this.url}/${id}`).send(item).then((data) => {
+      return data.status
+    })
+  }
+
 }
 
 module.exports = WebService

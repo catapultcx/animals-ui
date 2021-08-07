@@ -30,3 +30,15 @@ exports.delete = function (req, res) {
   })
 }
 
+exports.edit = function (req, res) {
+  horses.get(req.params.id).then((data) => {
+    res.render('edit-horse', { horse: data })
+  })
+}
+
+exports.update = function (req, res) {
+  horses.update(req.params.id, req.body).then(() => {
+    res.redirect('/horses')
+  })
+}
+

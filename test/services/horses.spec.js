@@ -37,4 +37,11 @@ describe('horses', function () {
     })
   })
 
+  it('update a horse', function () {
+    let horse = { id:'123', name: 'Black Beauty', description: 'its Beauty' }
+    return service.update('123', horse).then((data) => {
+      data.should.eql(202)
+    })
+  })
+
 })
