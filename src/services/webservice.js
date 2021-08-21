@@ -1,6 +1,6 @@
 class WebService {
   constructor (url) {
-    this.url = url
+    this.url = url;
     this.agent = require('superagent')
   }
 
@@ -22,6 +22,12 @@ class WebService {
     })
   }
 
+  update (item) {
+    return this.agent.put(this.url).send(item).then((data) => {
+      return data.body
+    })
+  }
+
   delete (id) {
     return this.agent.post(`${this.url}/${id}`).send().then((data) => {
       return data.body
@@ -29,4 +35,4 @@ class WebService {
   }
 }
 
-module.exports = WebService
+module.exports = WebService;

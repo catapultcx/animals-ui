@@ -30,3 +30,15 @@ exports.delete = function (req, res) {
   })
 };
 
+exports.edit = function (req, res) {
+  birds.get(req.params.id).then((data) => {
+    res.render('edit-bird', { bird: data })
+  })
+};
+
+exports.update = function (req, res) {
+  birds.update(req.body).then(() => {
+    res.redirect('/birds')
+  })
+};
+
