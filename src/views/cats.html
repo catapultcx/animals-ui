@@ -25,6 +25,12 @@
             <td class="govuk-table__cell">
                 <a href="/cats/{{ cat.id }}" class="govuk-link">View</a>
             </td>
+            <td class="govuk-table__cell">
+                <a href="/cats/edit/{{ cat.id }}" class="govuk-link">Update</a>
+            </td>
+            <td class="govuk-table__cell">
+                <a href="/cats/delete/{{ cat.id }}" class="govuk-link">Delete</a>
+            </td>
         </tr>
 
         {% endfor %}

@@ -29,7 +29,7 @@ class WebService {
   }
 
   delete (id) {
-    return this.agent.post(`${this.url}/${id}`).send().then((data) => {
+    return this.agent.delete(`${this.url}/${id}`).send().then((data) => {
       return data.body
     })
   }
