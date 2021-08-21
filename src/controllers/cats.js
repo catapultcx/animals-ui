@@ -30,3 +30,15 @@ exports.delete = function (req, res) {
   })
 };
 
+exports.edit = function (req, res) {
+  cats.get(req.params.id).then((data) => {
+    res.render('edit-cat', { cat: data })
+  })
+};
+
+exports.update = function (req, res) {
+  cats.update(req.body).then(() => {
+    res.redirect('/cats')
+  })
+};
+
