@@ -29,3 +29,9 @@ exports.del = function (req, res) {
     res.redirect('/dogs')
   })
 }
+
+exports.update = function (req, res) {
+  dogs.update(req.params.id, req.body).then((data) => {
+    res.redirect('/dogs')
+  })
+}

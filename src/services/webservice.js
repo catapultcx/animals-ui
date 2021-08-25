@@ -25,6 +25,12 @@ class WebService {
   del (id) {
     return this.agent.del(`${this.url}/${id}`)
   }
+
+  update (id, item) {
+    return this.agent.put(`${this.url}/${id}`).send(item).then((data) => {
+      return data.body
+    })
+  }
 }
 
 module.exports = WebService

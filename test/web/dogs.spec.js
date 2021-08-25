@@ -60,6 +60,12 @@ describe('/', function () {
     })
   })
 
+  it('should update an existing dog', function () {
+    return agent.put('/dogs/456').expect(302).send({name: 'Updated name', description: 'Updated description'}).then(data => {
+      data.text.includes('/dogs').should.be.true()
+    })
+  })
+
   afterEach('Teardown', function () {
     console.log('Teardown')
     server.close()
