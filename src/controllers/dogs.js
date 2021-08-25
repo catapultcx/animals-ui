@@ -24,3 +24,8 @@ exports.get = function (req, res) {
   })
 }
 
+exports.del = function (req, res) {
+  dogs.del(req.params.id).then((data) => {
+    res.redirect('/dogs')
+  })
+}

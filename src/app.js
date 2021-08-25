@@ -16,6 +16,10 @@ nunjucks.configure([
     path.join(govkukFrontendPath, '../govuk/components'),],
   { autoescape: true, express: app })
 
+const methodOverride = require('method-override')
+
+app.use(methodOverride('_method'))
+
 app.set('view engine', 'html')
 
 app.use(express.json())

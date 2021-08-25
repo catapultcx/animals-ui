@@ -54,6 +54,12 @@ describe('/', function () {
     })
   })
 
+  it('should delete a dog', function () {
+    return agent.del('/dogs/123').expect(302).then(data => {
+      data.text.includes('/dogs').should.be.true()
+    })
+  })
+
   afterEach('Teardown', function () {
     console.log('Teardown')
     server.close()
