@@ -42,6 +42,18 @@ describe('/', function () {
     })
   })
 
+  it('should get dogs', function () {
+    return agent.get('/dogs').expect(200).then(data => {
+      data.text.includes('Dogs').should.be.true()
+    })
+  })
+
+  it('should get a dog', function () {
+    return agent.get('/dogs/123').expect(200).then(data => {
+      data.text.includes('Dog').should.be.true()
+    })
+  })
+
   afterEach('Teardown', function () {
     console.log('Teardown')
     server.close()
