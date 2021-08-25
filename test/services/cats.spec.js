@@ -31,4 +31,18 @@ describe('cats', function () {
     })
   })
 
+  it('update a cat', function () {
+    let item = { name: 'NewCat', description: 'NewDesc' }
+    return service.create(item).then((data) => {
+      data.name = 'UpdatedName'
+      data.description = 'UpdatedDesc'
+
+      service.update(data.id, data).then((updated) => {
+        updated.name.should.eql(data.name)
+        updated.description.should.eql(data.description)
+        updated.id.should.eql(data.id)
+      })
+    })
+  })
+
 })

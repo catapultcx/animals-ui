@@ -24,3 +24,8 @@ exports.add = function (req, res) {
   })
 }
 
+exports.update = function (req, res) {
+  cats.update(req.params.id, req.body).then((data) => {
+    res.redirect('/cats')
+  })
+}
