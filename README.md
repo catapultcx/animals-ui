@@ -14,7 +14,7 @@ pattern, along with with [service classes](https://developer.mozilla.org/en-US/d
 
     src
     +-- bin
-    |   -- www
+    |   -- www.js
     |   controllers    
     |   routes    
     |   views
@@ -36,7 +36,7 @@ README.md                   | Explanation of the module and how to use it
 package.json                | For building with `npm`
 Dockerfile                  | To build a Docker image
 docker-compose.yml          | To run the Docker image and all dependencies
-www                         | To start the service
+www.js                         | To start the service
 .gitignore                  | Files to be ignored from SCM
 
 ### Prerequisites and setup

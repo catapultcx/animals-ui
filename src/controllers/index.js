@@ -1,11 +1,11 @@
-exports.index = function (req, res) {
+export function index (req, res) {
   res.status(200).render('index')
 }
 
-exports.login = function (req, res) {
+export function login (req, res) {
   res.status(404).send('Page not implemented yet')
 }
 
-exports.signup = function (req, res) {
+export function signup (req, res) {
   res.status(404).send('Page not implemented yet')
 }

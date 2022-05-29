@@ -1,4 +1,4 @@
-const WebService = require('./webservice')
+import WebService from './webservice.js'
 
 class Cats extends WebService {
   constructor (url) {
@@ -6,4 +6,4 @@ class Cats extends WebService {
   }
 }
 
-module.exports = Cats
+export default Cats

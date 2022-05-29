@@ -1,26 +1,28 @@
-require('dotenv').config()
-const Cats = require('../services/cats')
+import { config } from 'dotenv'
+config()
+
+import Cats from '../services/cats.js'
 const cats = new Cats(process.env.API_URL)
 
-exports.all = function (req, res) {
-  cats.all().then((data) => {
-    res.render('cats', { cats: data })
-  })
+export function all (req, res) {
+  cats
+    .all()
+    .then((data) => { res.render('cats', { cats: data }) })
 }
 
-exports.get = function (req, res) {
-  cats.get(req.params.id).then((data) => {
-    res.render('view-cat', { cat: data })
-  })
+export function get (req, res) {
+  cats
+    .get(req.params.id)
+    .then((data) => { res.render('view-cat', { cat: data }) })
 }
 
-exports.addPage = function (req, res) {
+export function addPage (req, res) {
   res.render('add-cat')
 }
 
-exports.add = function (req, res) {
-  cats.create(req.body).then(() => {
-    res.redirect('/cats')
-  })
+export function add (req, res) {
+  cats
+    .create(req.body)
+    .then(() => { res.redirect('/cats') })
 }
 

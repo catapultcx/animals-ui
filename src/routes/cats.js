@@ -1,10 +1,10 @@
-const express = require('express')
+import express from 'express'
+import { add, addPage, all, get } from '../controllers/cats.js'
+
 const router = new express.Router()
-const cats = require('../controllers/cats')
+router.get('/', all)
+router.get('/add', addPage)
+router.get('/:id', get)
+router.post('/', add)
 
-router.get('/', cats.all)
-router.get('/add', cats.addPage)
-router.get('/:id', cats.get)
-router.post('/', cats.add)
-
-module.exports = router
+export default router

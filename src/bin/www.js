@@ -4,9 +4,9 @@
  * Module dependencies.
  */
 
-var app = require('../app.js');
-var debug = require('debug')('govuk-express:server');
-var http = require('http');
+import app from '../app.js'
+import debug from 'debug'
+import http from 'http'
 
 /**
  * Get port from environment and store in Express.

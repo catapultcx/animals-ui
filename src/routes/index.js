@@ -1,9 +1,9 @@
-const express = require('express')
+import express from 'express'
+import { index, login, signup } from '../controllers/index.js'
+
 const router = new express.Router()
-const index = require('../controllers/index')
+router.get('/', index)
+router.get('/login', login)
+router.get('/signup', signup)
 
-router.get('/', index.index)
-router.get('/login', index.login)
-router.get('/signup', index.signup)
-
-module.exports = router
+export default router

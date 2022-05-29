@@ -1,16 +1,16 @@
 'use strict'
-const express = require('express')
-const path = require('path')
+import express from 'express'
+import nunjucks from 'nunjucks'
+import formData from 'express-form-data'
+import path from 'path'
+import cats from './routes/cats.js'
+import index from './routes/index.js'
+import { initialiseErrors } from './errors.js'
+
 const app = express()
-const formData = require('express-form-data')
-const index = require('./routes/index')
-const cats = require('./routes/cats')
 const govkukFrontendPath = 'node_modules/govuk-frontend'
-
-const nunjucks = require('nunjucks')
-
 nunjucks.configure([
-    path.join(__dirname, 'views'),
+    path.join('./src/views'),
     path.join(govkukFrontendPath, '/govuk'),
     path.join(govkukFrontendPath, '/govuk/components'),],
   { autoescape: true, express: app })
@@ -22,13 +22,13 @@ app.use(express.urlencoded({ extended: false }))
 app.use(formData.parse({}))
 app.use(formData.union())
 
-app.use('/assets', express.static(
-  path.join(govkukFrontendPath, '../govuk/assets')))
-app.use('/assets/js/all.js', express.static(
-  path.join(govkukFrontendPath, '../govuk/all.js')))
-app.use('/public', express.static(path.join(__dirname, '../public')))
+app.use('/assets', express.static(path.join(govkukFrontendPath, '../govuk/assets')))
+app.use('/assets/js/all.js', express.static(path.join(govkukFrontendPath, '../govuk/all.js')))
+app.use('/public', express.static(path.join('./public')))
 
 app.use('/', index)
 app.use('/cats', cats)
 
-module.exports = app
+initialiseErrors(app)
+
+export default app

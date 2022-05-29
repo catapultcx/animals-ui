@@ -1,12 +1,12 @@
 {
   "name": "@catapult/gov.uk-express",
   "version": "0.0.1",
+  "type": "module",
   "scripts": {
-    "test-ci": "nyc --reporter=lcov --reporter=text mocha --reporter mocha-sonar-generic-test-coverage --reporter-options outputFile=TESTS-sonar.xml --timeout 15000 ./**/*.spec.js",
-    "test": "nyc --reporter=lcov --reporter=text mocha --timeout 15000 ./**/*.spec.js",
-    "test-mocha": "mocha ./**/*.spec.js",
-    "test-html": "nyc --reporter=html --reporter=text mocha --timeout 15000 ./**/*.spec.js",
-    "start": "gulp build && nodemon ./src/bin/www"
+    "test-ci": "NODE_OPTIONS=--experimental-vm-modules jest --ci --coverage --forceExit",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --ci --coverage --forceExit",
+    "start": "gulp build && nodemon ./src/bin/www",
+    "run": "nodemon ./src/bin/www"
   },
   "nodemonConfig": {
     "watch": [
@@ -19,22 +19,22 @@
     "express": "^4.18.1",
     "express-form-data": "^2.0.18",
     "govuk-frontend": "^4.1.0",
+    "http-errors": "^2.0.0",
     "nunjucks": "^3.2.3",
     "superagent": "^7.1.3"
   },
   "devDependencies": {
-    "decache": "^4.6.1",
     "del": "^6.1.1",
-    "node-sass": "^7.0.1",
-    "sass": "^1.52.1",
     "gulp": "^4.0.2",
     "gulp-nodemon": "^2.5.0",
     "gulp-sass": "^5.1.0",
+    "jest": "^28.1.0",
     "mocha": "^10.0.0",
     "mocha-sonar-generic-test-coverage": "0.0.6",
+    "node-sass": "^7.0.1",
     "nodemon": "^2.0.16",
     "nyc": "^15.1.0",
-    "should": "^13.2.3",
+    "sass": "^1.52.1",
     "supertest": "^6.2.3"
   }
 }
