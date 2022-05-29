@@ -1,9 +1,7 @@
-const del = require('del');
-const gulp = require('gulp');
+const del = require('del')
 
-function clean() {
-    return del(['./public/*',
-        '.port.tmp'])
+function clean () {
+  return del(['./public/*', '.port.tmp'])
 }
 
-exports.clean = clean;
+exports.clean = clean
