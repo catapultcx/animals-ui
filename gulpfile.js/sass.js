@@ -1,6 +1,6 @@
 'use strict'
 const { parallel, src, dest } = require('gulp')
-const gsass = require('gulp-sass')
+const gsass = require('gulp-sass')(require('sass'))
 gsass.compiler = require('node-sass')
 
 function govUKSass () {

@@ -5,13 +5,14 @@ const app = express()
 const formData = require('express-form-data')
 const index = require('./routes/index')
 const cats = require('./routes/cats')
-const govkukFrontendPath = require.resolve('govuk-frontend/package.json')
+const govkukFrontendPath = 'node_modules/govuk-frontend'
+
 const nunjucks = require('nunjucks')
 
 nunjucks.configure([
     path.join(__dirname, 'views'),
-    path.join(govkukFrontendPath, '../govuk'),
-    path.join(govkukFrontendPath, '../govuk/components'),],
+    path.join(govkukFrontendPath, '/govuk'),
+    path.join(govkukFrontendPath, '/govuk/components'),],
   { autoescape: true, express: app })
 
 app.set('view engine', 'html')
