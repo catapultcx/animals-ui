@@ -29,7 +29,7 @@
     "gulp-cli": "^2.3.0",
     "gulp-nodemon": "^2.5.0",
     "gulp-sass": "^5.1.0",
-    "jest": "^28.1.0",
+    "jest": "^28.1.1",
     "mocha": "^10.0.0",
     "mocha-sonar-generic-test-coverage": "0.0.6",
     "node-sass": "^7.0.1",
