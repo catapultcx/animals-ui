@@ -13,7 +13,7 @@ export function all (req, res) {
 export function get(req, res) {
   animals
     .get(req.params.id)
-    .then((data) => { res.render('view-cat', { cat: data }) })
+    .then((data) => { res.render('view-animal', { animal: data }) })
 }
 
 export function addPage (req, res) {

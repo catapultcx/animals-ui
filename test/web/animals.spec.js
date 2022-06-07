@@ -12,12 +12,16 @@ describe('/', function () {
       })
   })
 
-  it('should get a animal', function () {
+  it('should get an animal', function () {
     return request(app)
       .get('/animals/123')
       .expect(200)
       .then(data => {
-        expect(data.text).toContain('animal')
+        expect(data.text).toContain('Animal')
+        expect(data.text).toContain('Colour')
+        expect(data.text).toContain('Description')
+        expect(data.text).toContain('Name')
+        expect(data.text).toContain('Type')
       })
   })
 
@@ -26,11 +30,11 @@ describe('/', function () {
       .get('/animals/add')
       .expect(200)
       .then(data => {
-        expect(data.text).toContain('Add a animal')
+        expect(data.text).toContain('Add an animal')
       })
   })
 
-  it('should add a animal', function () {
+  it('should add an animal', function () {
     return request(app)
       .post('/animals')
       .expect(302)
