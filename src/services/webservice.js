@@ -12,6 +12,12 @@ class WebService {
       .then((data) => { return data.body })
   }
 
+  allTypes () {
+    return this.agent
+      .get(`${this.url}/types`)
+      .then((data) => { return data.body })
+  }
+
   get (id) {
     return this.agent
       .get(`${this.url}/${id}`)
