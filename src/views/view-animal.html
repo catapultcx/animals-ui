@@ -29,7 +29,12 @@
             <td class="govuk-table__cell">{{ animal.type }}</td>
         </tr>
 
-       
+        <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header"></th>
+            <td class="govuk-table__cell">
+                <a href="/animals/delete/{{ animal.id }}" class="govuk-link">Delete</a>
+            </td>
+        </tr>       
         </tbody>
     </table>
 </div>

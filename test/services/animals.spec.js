@@ -15,29 +15,34 @@ describe('animals', function () {
       expect(data.name).toEqual(item.name)
       expect(data.description).toEqual(item.description)
       expect(data.id).toBeDefined()
-
-      // data.name.should.eql(item.name)
-      // data.description.should.eql(item.description)
-      // data.should.have.property('id')
+      
       created = data
     })
   })
 
-  it('get a created animal', function () {
-    return service.get(created.id).then((data) => {
+  it('get a created animal', () =>
+    service.get(created.id).then((data) => {
       expect(data.name).toEqual(item.name)
       expect(data.description).toEqual(item.description)
       expect(data.id).toBeDefined()
-
-      // data.name.should.eql(data.name)
-      // data.id.should.eql(data.id)
-      // data.description.should.eql(data.description)
     })
+  )
+  
+  it('delete a created animal', async () => {
+    const createdResult = await service.get(created.id);
+
+    expect(createdResult.name).toEqual(item.name)
+    expect(createdResult.description).toEqual(item.description)
+    expect(createdResult.id).toBeDefined()
+
+    const deletedResult = await service.del(created.id)
+      
+    expect(deletedResult).toBeTruthy();
   })
 
-  it('get all animals', function () {
-    return service.all().then((data) => {
+  it('get all animals', () =>
+    service.all().then((data) => {
       expect(data.length).toBeGreaterThan(0)
     })
-  })
+  )
 })
