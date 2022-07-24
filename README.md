@@ -1,6 +1,6 @@
 ### GOV.UK express
 
-This is a working NodeJS (express) web application that uses the [GOV.UK frontend](https://github.com/alphagov/govuk-frontend) 
+This is a working NodeJS (express) web application that uses the [GOV.UK frontend](https://github.com/alphagov/govuk-frontend)
 and adheres to the [GOV.UK Design System](https://design-system.service.gov.uk).
 
 It also acts as the standard for how an express project should be structured, and what files are expected.  
@@ -9,8 +9,8 @@ It can be copied and used at the starting point for any new web app.
 
 ### Project structure
 
-NodeJS services in the MCA follow the express [routes/controllers](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes) 
-pattern, along with with [service classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) that CRUD data. 
+NodeJS services in the MCA follow the express [routes/controllers](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes)
+pattern, along with with [service classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) that CRUD data.
 
     src
     +-- bin
@@ -24,7 +24,7 @@ pattern, along with with [service classes](https://developer.mozilla.org/en-US/d
     --- web
     --- services
     --- ...
- 
+
 
 ##### Expected project files
 
@@ -32,7 +32,7 @@ Each project should have the following files:
 
 Name                        | Purpose
 ----------------------------|-----------------------------------------------
-README.md                   | Explanation of the module and how to use it 
+README.md                   | Explanation of the module and how to use it
 package.json                | For building with `npm`
 Dockerfile                  | To build a Docker image
 docker-compose.yml          | To run the Docker image and all dependencies
@@ -47,10 +47,14 @@ Developers should install the following on their machines:
 * [Docker](https://docs.docker.com/install)
 * [Docker Compose](https://docs.docker.com/compose/install/)
 
+Optional
+
+* [NVM](https://github.com/nvm-sh/nvm)
+
 Environment variables are defined in the `.env.example` file. This should be copied locally into
 `.env` but NOT commited.
 
-### View templating 
+### View templating
 
 This project uses [nunjucks](https://mozilla.github.io/nunjucks/) for its view templating.  
 
@@ -66,9 +70,9 @@ Install the dependencies
 Test (first start `animals-api` service)
 
     npm test
-    
-Run locally 
-  
+
+Run locally
+
     npm start
 
 ##### Docker  
@@ -88,7 +92,7 @@ Run API from Docker Hub
 Publish to Docker Hub
 
     ./docker.sh
-    
+
 ### Accessing locally
 
 The service will be available at http://localhost:2997/
