@@ -36,3 +36,22 @@ jobs:
     - run: npm test
       env:
         CI: true
+
+  deploy:
+    name: Deploy my app
+    runs-on: ubuntu-latest
+
+    permissions:
+      deployments: write
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: chrnorm/deployment-action@v2
+        name: Create GitHub deployment
+        id: deployment
+        with:
+          token: '${{ github.token }}'
+          environment-url: http://my-app-url.com
+          environment: production
+        # more steps below where you run your deployment scripts inside the same action
