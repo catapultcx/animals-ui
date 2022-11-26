@@ -33,6 +33,17 @@ describe('animals', function () {
     })
   })
 
+  it('delete an animal', function () {
+    //TODO Use async await model for more readability
+    service.create(item).then((created) => {
+      return service.delete(created.id).then(() => {
+        return service.get().then((deleted) => {
+          expect(deleted.id).not.toBeDefined()
+        })    
+      })
+    })
+  })
+
   it('get all animals', function () {
     return service.all().then((data) => {
       expect(data.length).toBeGreaterThan(0)

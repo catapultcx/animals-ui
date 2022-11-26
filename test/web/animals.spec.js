@@ -11,6 +11,8 @@ describe('/', function () {
         expect(data.text).toContain('Animals')
         expect(data.text).toContain('Type')
         expect(data.text).toContain('Colour')
+        expect(data.text).toContain('View')
+        expect(data.text).toContain('Delete')
       })
   })
 
