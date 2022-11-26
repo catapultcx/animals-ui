@@ -3,9 +3,9 @@
 
 <div class="govuk-width-container app-site-width-container">
 
-    <h1 class="govuk-heading-l">Add a Cat</h1>
+    <h1 class="govuk-heading-l">Add an Animal</h1>
     
-    <form action="/cats" method="post">
+    <form action="/animals" method="post">
         <div class="govuk-form-group">
             <label class="govuk-label" for="name">
                 Name
@@ -17,6 +17,13 @@
                 Description
             </label>
             <input class="govuk-input" id="description" name="description" type="text" spellcheck="false" required>
+        </div>
+        {# //TODO Model this as drop down box with values getting from backend #}
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="type">
+                Type
+            </label>
+            <input class="govuk-input" id="type" name="type" type="text" spellcheck="false" required>
         </div>
 
         <button class="govuk-button" type="submit">Submit</button>
