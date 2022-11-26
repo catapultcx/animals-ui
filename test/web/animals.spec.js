@@ -10,6 +10,7 @@ describe('/', function () {
       .then(data => {
         expect(data.text).toContain('Animals')
         expect(data.text).toContain('Type')
+        expect(data.text).toContain('Colour')
       })
   })
 
@@ -20,6 +21,7 @@ describe('/', function () {
       .then(data => {
         expect(data.text).toContain('Animal')
         expect(data.text).toContain('Type')
+        expect(data.text).toContain('Colour')
       })
   })
 
@@ -30,6 +32,7 @@ describe('/', function () {
       .then(data => {
         expect(data.text).toContain('Add an Animal')
         expect(data.text).toContain('Type')
+        expect(data.text).toContain('Colour')
       })
   })
 

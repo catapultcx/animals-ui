@@ -5,8 +5,9 @@ config()
 const service = new Animals(process.env.API_URL)
 let created
 
-let item = { name: 'Tom', description: 'Friend of Jerry', type: 'MAMMALS' }
+let item = { name: 'Tom', description: 'Friend of Jerry', colour: 'Orange', type: 'MAMMALS' }
 
+//TODO break the dependency on backend to be up and running by using wiremock or superagent mock
 describe('animals', function () {
 
   it('get create an animal', function () {
@@ -16,6 +17,7 @@ describe('animals', function () {
       expect(data.description).toEqual(item.description)
       expect(data.id).toBeDefined()
       expect(data.type).toEqual(item.type)
+      expect(data.colour).toEqual(item.colour)
       created = data
     })
   })
@@ -27,6 +29,7 @@ describe('animals', function () {
       expect(data.description).toEqual(item.description)
       expect(data.id).toBeDefined()
       expect(data.type).toEqual(item.type)
+      expect(data.colour).toEqual(item.colour)
     })
   })
 
