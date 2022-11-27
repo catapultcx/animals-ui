@@ -1,6 +1,8 @@
 import request from 'supertest'
 import app from '../../src/app'
 
+const animalPayload = { name: 'Test animal', description: 'Test description', colour: 'Orange',type: 'BIRD' }
+
 describe('/', function () {
 
   it('animals list page', function () {
@@ -9,6 +11,7 @@ describe('/', function () {
       .expect(200)
       .then(data => {
         expect(data.text).toContain('Add an Animal')
+        expect(data.text).toContain('Search')
         expect(data.text).toContain('Animals')
         expect(data.text).toContain('Name')
         expect(data.text).toContain('Description')
@@ -44,11 +47,11 @@ describe('/', function () {
       })
   })
 
-  it('post add animal redirect to animals list page', function () {
+  it('submit add animal should redirect to animals list page', function () {
     return request(app)
       .post('/animals')
       .expect(302)
-      .send({ name: 'Test animal', description: 'Test description' })
+      .send(animalPayload)
       
     })
 
@@ -63,10 +66,16 @@ describe('/', function () {
       })
   })
 
-  it('post update animal redirect to animals list page', function () {
+  it('submit update animal should redirect to animals list page', function () {
     return request(app)
       .post('/animals/update/123')
       .expect(302)
-      .send({ name: 'Test animal', description: 'Test description' })
+      .send(animalPayload)
+  })
+
+  it('submit search', function () {
+    return request(app)
+      .get('/animals/search?terms=abc')
+      .expect(200)
   })
 })

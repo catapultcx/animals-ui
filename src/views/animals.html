@@ -7,6 +7,16 @@
 
     <a class="govuk-button" href="/animals/add">Add an Animal</a>
 
+    <form action="/animals/search" method="get">
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="terms">
+                Search
+            </label>
+            <input class="govuk-input" id="terms" name="terms" type="text" spellcheck="false" required>
+        </div>
+        <button class="govuk-button" type="submit">Search</button>
+    </form>
+
     <table class="govuk-table">
         <caption class="govuk-table__caption">Animals</caption>
         <thead class="govuk-table__head">

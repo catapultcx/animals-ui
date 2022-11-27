@@ -1,8 +1,9 @@
 import express from 'express'
-import { add, addPage, update, updatePage, all, get, del } from '../controllers/animals.js'
+import { add, addPage, update, updatePage, all, get, del, search } from '../controllers/animals.js'
 
 const router = new express.Router()
 router.get('/', all)
+router.get('/search', search)
 router.get('/add', addPage)
 router.post('/', add)
 router.get('/update/:id', updatePage)

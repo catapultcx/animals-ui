@@ -37,6 +37,12 @@ class WebService {
       .del(`${this.url}/${id}`)
       .then((data) => { return data.body })
   }
+
+  search (terms) {    
+    return this.agent
+      .get(`${this.url}/search?searchTerm=${terms}`)
+      .then((data) => { return data.body })
+  }
 }
 
 export default WebService

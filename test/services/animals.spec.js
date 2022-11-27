@@ -7,7 +7,7 @@ let created
 
 let item = { name: 'Tom', description: 'Friend of Jerry', colour: 'Orange', type: 'MAMMALS' }
 
-//TODO break the dependency on backend to be up and running by using wiremock or superagent mock
+//TODO break the dependency on backend to be up and running by using wiremock or superagent mock, tests are undeterministic when run multiple times, as backend is not resetting the state
 describe('animals', function () {
 
   it('create animal', function () {
@@ -61,6 +61,24 @@ describe('animals', function () {
         return service.get().then((deleted) => {
           expect(deleted.id).not.toBeDefined()
         })    
+      })
+    })
+  })
+
+  it('search animals', function async () {
+    let animal = item
+    animal.name = 'search-animal-1'
+
+    //create two animals
+    return service.create(animal).then(() => {
+
+      animal.name = 'animal-2'
+      return service.create(animal).then(() => {
+
+        //perform search
+        return service.search('search-').then((data) => {
+          expect(data.length).toBeGreaterThan(0)
+        })
       })
     })
   })

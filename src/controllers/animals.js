@@ -44,3 +44,9 @@ export function del (req, res) {
     .then(() => { res.redirect('/animals') })
 }
 
+export function search (req, res) {
+  animals
+    .search(req.query.terms)
+    .then((data) => { res.render('animals', { animals: data }) })
+}
+
