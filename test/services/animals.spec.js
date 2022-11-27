@@ -10,7 +10,7 @@ let item = { name: 'Tom', description: 'Friend of Jerry', colour: 'Orange', type
 //TODO break the dependency on backend to be up and running by using wiremock or superagent mock
 describe('animals', function () {
 
-  it('get create an animal', function () {
+  it('create animal', function () {
 
     return service.create(item).then((data) => {
       expect(data.name).toEqual(item.name)
@@ -22,7 +22,7 @@ describe('animals', function () {
     })
   })
 
-  it('get a created animal', function () {
+  it('get animal', function () {
     //TODO break the dependency on 1st test, setup data indenpendently
     return service.get(created.id).then((data) => {
       expect(data.name).toEqual(item.name)
@@ -33,10 +33,31 @@ describe('animals', function () {
     })
   })
 
-  it('delete an animal', function () {
+  it('update animal', function () {
+
+    return service.create(item).then((created) => {
+      expect(created.name).toEqual(item.name)
+      created.name = 'updated-animal-name'
+
+      return service.update(created.id, created).then((updated) => {
+        
+        //fetch updated animal and assert
+        return service.get(updated.id).then((updateFetched) => {
+          expect(updateFetched.name).toEqual('updated-animal-name')
+        })
+        
+      })
+      
+    })
+  })
+
+  it('delete animal', function () {
     //TODO Use async await model for more readability
     service.create(item).then((created) => {
+
       return service.delete(created.id).then(() => {
+      
+        //fetch deleted animal and assert
         return service.get().then((deleted) => {
           expect(deleted.id).not.toBeDefined()
         })    

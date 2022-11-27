@@ -3,32 +3,33 @@
 
 <div class="govuk-width-container app-site-width-container">
 
-    <h1 class="govuk-heading-l">Add an Animal</h1>
+    <h1 class="govuk-heading-l">Update an Animal</h1>
     
-    <form action="/animals" method="post">
+    <form action="/animals/update/{{ animal.id }}" method="post">
         <div class="govuk-form-group">
             <label class="govuk-label" for="name">
                 Name
             </label>
-            <input class="govuk-input" id="name" name="name" type="text" spellcheck="false" required>
+            <input class="govuk-input" id="name" name="name" type="text" spellcheck="false" value="{{ animal.name }}" required>
         </div>
         <div class="govuk-form-group">
             <label class="govuk-label" for="description">
                 Description
             </label>
-            <input class="govuk-input" id="description" name="description" type="text" spellcheck="false" required>
+            <input class="govuk-input" id="description" name="description" type="text" spellcheck="false" value="{{ animal.description }}" required>
         </div>
         <div class="govuk-form-group">
             <label class="govuk-label" for="colour">
                 Colour
             </label>
-            <input class="govuk-input" id="colour" name="colour" type="text" spellcheck="false" required>
+            <input class="govuk-input" id="colour" name="colour" type="text" spellcheck="false" value="{{ animal.colour }}" required>
         </div>
+        {# //TODO Model this as drop down box with values getting from backend #}
         <div class="govuk-form-group">
             <label class="govuk-label" for="type">
                 Type
             </label>
-            <input class="govuk-input" id="type" name="type" type="text" spellcheck="false" required>
+            <input class="govuk-input" id="type" name="type" type="text" spellcheck="false" value="{{ animal.type }}" required>
         </div>
 
         <button class="govuk-button" type="submit">Submit</button>
