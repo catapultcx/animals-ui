@@ -77,6 +77,10 @@ Run locally
 
 ##### Docker  
 
+Note: these are not tested on all environments, if you struggle with them then just start the service with `npm start`
+
+If you are familiar with docker you may wish to use it to run the service.
+
 Run locally
 
     docker-compose up
