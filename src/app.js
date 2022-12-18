@@ -4,6 +4,7 @@ import nunjucks from 'nunjucks'
 import formData from 'express-form-data'
 import path from 'path'
 import cats from './routes/cats.js'
+import animals from './routes/animals.js'
 import index from './routes/index.js'
 import { initialiseErrors } from './errors.js'
 
@@ -28,6 +29,7 @@ app.use('/public', express.static(path.join('./public')))
 
 app.use('/', index)
 app.use('/cats', cats)
+app.use('/animals', animals)
 
 initialiseErrors(app)
 
