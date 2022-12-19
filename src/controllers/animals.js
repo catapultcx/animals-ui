@@ -27,11 +27,23 @@ export function add (req, res) {
 }
 
 export function del (req, res) {
-  console.log("TWAT")
-  console.log(req.params.id)
   animals
       .del(req.params.id)
       .then(() => { res.redirect('/animals') })
+}
+
+export function updatePage (req, res) {
+  animals
+      .get(req.params.id)
+      .then((data) => {
+        res.render('update-animal', {animal: data})
+      })
+}
+
+export function update (req, res) {
+  animals
+      .update(req.params.id, req.body)
+      .then((data) => {res.render('view-animal', { animal: data }) })
 }
 
 
