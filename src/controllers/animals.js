@@ -26,3 +26,12 @@ export function add (req, res) {
     .then(() => { res.redirect('/animals') })
 }
 
+export function del (req, res) {
+  console.log("TWAT")
+  console.log(req.params.id)
+  animals
+      .del(req.params.id)
+      .then(() => { res.redirect('/animals') })
+}
+
+

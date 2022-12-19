@@ -36,4 +36,13 @@ describe('/', function () {
       .expect(302)
       .send({ name: 'Test cat', description: 'Test description', type: 'Test type', colour: 'Test colour' })
   })
+
+  // it('should remove an Animal', function () {
+  //   return request(app)
+  //       .get('/animals/delete/123')
+  //       .expect(200)
+  //       .then(data => {
+  //         expect(data.text).toContain('Animals')
+  //       })
+  // })
 })
