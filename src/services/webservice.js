@@ -24,6 +24,13 @@ class WebService {
       .send(item)
       .then((data) => { return data.body })
   }
+
+  remove (id) {
+    alert("here we are in webservice")
+    return this.agent
+        .delete(`${this.url}/${id}`)
+        .then((data) => { return data.body })
+  }
 }
 
 export default WebService

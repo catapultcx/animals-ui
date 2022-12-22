@@ -1,6 +1,20 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<script>
+//    const cats = require("../services/webservice");
+
+const Cats = require("../services/cats");
+
+function delFunction(catid) {
+        if (confirm('Press OK to confirm deletion of cat ' + catid)) {
+            Cats
+                .remove(catid)
+                .then((data) => { res.render('view-cat', { cat: data }) })
+        }
+    }
+</script>
+
 <div class="govuk-width-container app-site-width-container">
 
     <h1 class="govuk-heading-l">Cats</h1>
@@ -25,8 +39,8 @@
             <td class="govuk-table__cell">
                 <a href="/cats/{{ cat.id }}" class="govuk-link">View</a>
             </td>
+            <td class="govuk-table__cell"><button onclick="delFunction('{{ cat.id }}')">Delete</button></td>
         </tr>
-
         {% endfor %}
         </tbody>
     </table>
