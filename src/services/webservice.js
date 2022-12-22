@@ -26,7 +26,6 @@ class WebService {
   }
 
   remove (id) {
-    alert("here we are in webservice")
     return this.agent
         .delete(`${this.url}/${id}`)
         .then((data) => { return data.body })

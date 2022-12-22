@@ -27,7 +27,6 @@ export function add (req, res) {
 }
 
 export function remove (req, res) {
-  alert("here we are in controllers")
   cats
       .remove(req.params.id)
       .then((data) => { res.render('view-cat', { cat: data }) })
