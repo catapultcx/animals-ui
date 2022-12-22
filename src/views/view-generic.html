@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="govuk-width-container app-site-width-container">
+
+    <h1 class="govuk-heading-l">Animal</h1>
+
+    <table class="govuk-table">
+        <caption class="govuk-table__caption">Animal</caption>
+        <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Name</th>
+            <td class="govuk-table__cell">{{ generic.name }}</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Description</th>
+            <td class="govuk-table__cell">{{ generic.description }}</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Species</th>
+            <td class="govuk-table__cell">{{ generic.species }}</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Species Group</th>
+            <td class="govuk-table__cell">{{ generic.group }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

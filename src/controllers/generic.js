@@ -17,7 +17,7 @@ export function get (req, res) {
 }
 
 export function addPage (req, res) {
-  res.render('add-cat')
+  res.render('add-generic')
 }
 
 export function add (req, res) {
