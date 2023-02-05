@@ -5,10 +5,6 @@
 
     <h1 class="govuk-heading-l">Animals</h1>
 
-    <a class="govuk-button" href="/animals/add">Add a Animal</a>
-
-    <a class="govuk-button" href="/animals/filter">Filter Animals</a>
-
     <table class="govuk-table">
         <caption class="govuk-table__caption">Animals</caption>
         <thead class="govuk-table__head">
@@ -30,11 +26,6 @@
             <td class="govuk-table__cell">{{ animal.color }}</td>
 
             <td class="govuk-table__cell">{{ animal.description }}</td>
-            <td class="govuk-table__cell">
-                <a href="/animals/{{ animal.id }}" class="govuk-link">View</a>
-                <a href="/animals/update/{{ animal.id }}" class="govuk-link">Update</a>
-                <a href="/animals/delete/{{ animal.id }}" class="govuk-link">Delete</a>
-            </td>
         </tr>
 
         {% endfor %}

@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="govuk-width-container app-site-width-container">
+
+    <h1 class="govuk-heading-l">Filter Animals</h1>
+
+    <form action="/animals/filter" method="post">
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="name">
+                Name
+            </label>
+            <input class="govuk-input" id="name" name="name" type="text" spellcheck="false">
+        </div>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="type">
+                Type
+            </label>
+            <input class="govuk-input" id="type" name="type" type="text" spellcheck="false">
+        </div>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="color">
+                Color
+            </label>
+            <input class="govuk-input" id="color" name="color" type="text" spellcheck="false">
+        </div>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="description">
+                Description
+            </label>
+            <input class="govuk-input" id="description" name="description" type="text" spellcheck="false">
+        </div>
+
+        <button class="govuk-button" type="submit">Filter</button>
+    </form>
+</div>
+{% endblock %}

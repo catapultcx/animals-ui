@@ -44,3 +44,13 @@ export function remove (req, res) {
       .delete(req.params.id)
       .then(() => { res.redirect('/animals') })
 }
+
+export function filterPage (req, res) {
+  res.render('filter-animal')
+}
+
+export function filter (req, res) {
+  animals
+      .filter(req.body.name, req.body.type, req.body.color, req.body.description)
+      .then((data) => { res.render('filtered-animals', { animals: data }) })
+}
