@@ -12,6 +12,8 @@
         <thead class="govuk-table__head">
         <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Name</th>
+            <th scope="col" class="govuk-table__header">Type</th>
+            <th scope="col" class="govuk-table__header">Color</th>
             <th scope="col" class="govuk-table__header">Description</th>
             <th scope="col" class="govuk-table__header"></th>
         </tr>
@@ -21,6 +23,10 @@
         {% for animal in animals %}
         <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">{{ animal.name }}</th>
+
+            <td class="govuk-table__cell">{{ animal.type }}</td>
+            <td class="govuk-table__cell">{{ animal.color }}</td>
+
             <td class="govuk-table__cell">{{ animal.description }}</td>
             <td class="govuk-table__cell">
                 <a href="/animals/{{ animal.id }}" class="govuk-link">View</a>
