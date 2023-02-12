@@ -1,5 +1,5 @@
 import express from 'express'
-import { add, addPage, all, get } from '../controllers/cats.js'
+import { add, addPage, all, get } from '../controllers/animals.js'
 
 const router = new express.Router()
 router.get('/', all)
