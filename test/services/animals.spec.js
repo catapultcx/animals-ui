@@ -7,11 +7,13 @@ describe('Animals Service', function () {
   config();
   const UUID = "UUID";
   const service = new Animals(process.env.API_URL);
-  const initialAnimal = {name: 'MockedAnimalName', description: 'MockedAnimalDescription'};
+  const initialAnimal = {name: 'MockedAnimalName', description: 'MockedAnimalDescription', color: 'MockedAnimalColor', type: 'MAMMALS' };
   const expectedAnimal = {
     id: UUID,
     name: initialAnimal.name,
-    description: initialAnimal.description
+    description: initialAnimal.description,
+    color: initialAnimal.color,
+    type: initialAnimal.type
   };
 
   let superagentMock;

@@ -34,6 +34,6 @@ describe('/', function () {
     return request(app)
       .post('/animals')
       .expect(302)
-      .send({ name: 'Test animal', description: 'Test description' })
+      .send({ name: 'Test animal', description: 'Test description', color: 'Test color', type: 'Test type' })
   })
 })
