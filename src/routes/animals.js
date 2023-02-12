@@ -1,10 +1,12 @@
 import express from 'express'
-import { add, addPage, all, get } from '../controllers/animals.js'
+import {add, addPage, all, view, update, updatePage} from '../controllers/animals.js'
 
 const router = new express.Router()
 router.get('/', all)
 router.get('/add', addPage)
-router.get('/:id', get)
+router.get('/view/:id', view)
 router.post('/', add)
+router.get('/update/:id', updatePage)
+router.post('/update/:id', update);
 
 export default router

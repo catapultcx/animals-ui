@@ -7,7 +7,12 @@ describe('Animals Service', function () {
   config();
   const UUID = "UUID";
   const service = new Animals(process.env.API_URL);
-  const initialAnimal = {name: 'MockedAnimalName', description: 'MockedAnimalDescription', color: 'MockedAnimalColor', type: 'MAMMALS' };
+  const initialAnimal = {
+    name: 'MockedAnimalName',
+    description: 'MockedAnimalDescription',
+    color: 'MockedAnimalColor',
+    type: 'MAMMALS'
+  };
   const expectedAnimal = {
     id: UUID,
     name: initialAnimal.name,
@@ -30,7 +35,7 @@ describe('Animals Service', function () {
         } else if (match[1] === '/animals') {
           return {body: [data]};
         }
-      }, post: (match, data) => ({body: data})
+      }, post: (match, data) => ({body: data}), put: (match, data) => ({body: data})
     }]);
   });
 
@@ -46,7 +51,7 @@ describe('Animals Service', function () {
     })
   })
 
-  it('get create a animal', function () {
+  it('should create an animal', function () {
     return service.create(initialAnimal).then((data) => {
       expect(actualParams).toBeDefined();
       expect(actualParams).toEqual(initialAnimal);
@@ -54,8 +59,16 @@ describe('Animals Service', function () {
     })
   })
 
-  it('get a created animal', function () {
+  it('should get an animal with id', function () {
     return service.get(expectedAnimal.id).then((data) => {
+      expect(data).toEqual(expectedAnimal);
+    })
+  })
+
+  it('should update an animal', function () {
+    return service.update(initialAnimal).then((data) => {
+      expect(actualParams).toBeDefined();
+      expect(actualParams).toEqual(initialAnimal);
       expect(data).toEqual(expectedAnimal);
     })
   })

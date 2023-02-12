@@ -12,21 +12,30 @@ describe('/', function () {
       })
   })
 
-  it('should get an animal', function () {
-    return request(app)
-      .get('/animals/123')
-      .expect(200)
-      .then(data => {
-        expect(data.text).toContain('Animal')
-      })
-  })
-
   it('should get add animal page', function () {
     return request(app)
       .get('/animals/add')
       .expect(200)
       .then(data => {
         expect(data.text).toContain('Add a Animal')
+      })
+  })
+
+  it('should get view animal page', function () {
+    return request(app)
+      .get('/animals/view/123')
+      .expect(200)
+      .then(data => {
+        expect(data.text).toContain('View Animal')
+      })
+  })
+
+  it('should get update animal page', function () {
+    return request(app)
+      .get('/animals/update/123')
+      .expect(200)
+      .then(data => {
+        expect(data.text).toContain('Update Animal')
       })
   })
 

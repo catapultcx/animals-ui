@@ -10,7 +10,7 @@ export function all (req, res) {
     .then((data) => { res.render('animals', { animals: data }) })
 }
 
-export function get (req, res) {
+export function view (req, res) {
   animals
     .get(req.params.id)
     .then((data) => { res.render('view-animal', { animal: data }) })
@@ -26,3 +26,19 @@ export function add (req, res) {
     .then(() => { res.redirect('/animals') })
 }
 
+export function updatePage (req, res) {
+  animals
+    .get(req.params.id)
+    .then((data) => {
+      res.render('update-animal', {animal: data})
+    })
+}
+
+export function update (req, res) {
+  req.body.id = req.params.id;
+  animals
+    .update(req.body)
+    .then(() => {
+      res.redirect('/animals')
+    })
+}
