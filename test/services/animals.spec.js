@@ -1,43 +1,61 @@
-import { config } from 'dotenv'
+import {config} from 'dotenv'
 import Animals from '../../src/services/animals.js'
+import superagent from 'superagent';
+import mockSuperagent from 'superagent-mock';
 
-config()
-const service = new Animals(process.env.API_URL)
-let created
+describe('Animals Service', function () {
+  config();
+  const UUID = "UUID";
+  const service = new Animals(process.env.API_URL);
+  const initialAnimal = {name: 'MockedAnimalName', description: 'MockedAnimalDescription'};
+  const expectedAnimal = {
+    id: UUID,
+    name: initialAnimal.name,
+    description: initialAnimal.description
+  };
 
-let item = { name: 'Tom', description: 'Friend of Jerry' }
+  let superagentMock;
+  let actualParams;
 
-describe('animals', function () {
+  beforeEach(() => {
+    superagentMock = mockSuperagent(superagent, [{
+      pattern: `${process.env.API_URL}(.*)`, fixtures: (match, params) => {
+        actualParams = params;
+        return expectedAnimal;
+      }, get: (match, data) => {
+        if (match[1] === '/animals/' + UUID) {
+          return {body: data};
+        } else if (match[1] === '/animals') {
+          return {body: [data]};
+        }
+      }, post: (match, data) => ({body: data})
+    }]);
+  });
+
+  afterEach(() => {
+    superagentMock.unset();
+  });
+
+  it('should get all animals', function () {
+    return service.all().then((data) => {
+      expect(data.length).toEqual(1);
+      expect(data[0]).toBeDefined();
+      expect(data[0]).toEqual(expectedAnimal);
+    })
+  })
 
   it('get create a animal', function () {
-
-    return service.create(item).then((data) => {
-      expect(data.name).toEqual(item.name)
-      expect(data.description).toEqual(item.description)
-      expect(data.id).toBeDefined()
-
-      // data.name.should.eql(item.name)
-      // data.description.should.eql(item.description)
-      // data.should.have.property('id')
-      created = data
+    return service.create(initialAnimal).then((data) => {
+      expect(actualParams).toBeDefined();
+      expect(actualParams).toEqual(initialAnimal);
+      expect(data).toEqual(expectedAnimal);
     })
   })
 
   it('get a created animal', function () {
-    return service.get(created.id).then((data) => {
-      expect(data.name).toEqual(item.name)
-      expect(data.description).toEqual(item.description)
-      expect(data.id).toBeDefined()
-
-      // data.name.should.eql(data.name)
-      // data.id.should.eql(data.id)
-      // data.description.should.eql(data.description)
+    return service.get(expectedAnimal.id).then((data) => {
+      expect(data).toEqual(expectedAnimal);
     })
   })
 
-  it('get all animals', function () {
-    return service.all().then((data) => {
-      expect(data.length).toBeGreaterThan(0)
-    })
-  })
 })
