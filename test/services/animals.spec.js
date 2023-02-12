@@ -26,16 +26,23 @@ describe('Animals Service', function () {
 
   beforeEach(() => {
     superagentMock = mockSuperagent(superagent, [{
-      pattern: `${process.env.API_URL}(.*)`, fixtures: (match, params) => {
+      pattern: `${process.env.API_URL}(.*)`,
+      fixtures: (match, params) => {
         actualParams = params;
         return expectedAnimal;
-      }, get: (match, data) => {
+      },
+      get: (match, data) => {
         if (match[1] === '/animals/' + UUID) {
           return {body: data};
         } else if (match[1] === '/animals') {
           return {body: [data]};
         }
-      }, post: (match, data) => ({body: data}), put: (match, data) => ({body: data})
+      },
+      post: (match, data) => ({body: data}),
+      put: (match, data) => ({body: data}),
+      delete: () => {
+
+      }
     }]);
   });
 
@@ -71,6 +78,10 @@ describe('Animals Service', function () {
       expect(actualParams).toEqual(initialAnimal);
       expect(data).toEqual(expectedAnimal);
     })
+  })
+
+  it('should delete an animal', function () {
+    return service.delete(UUID).then((data) => expect(data).toBeUndefined());
   })
 
 })

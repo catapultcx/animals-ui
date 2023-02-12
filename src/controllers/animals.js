@@ -42,3 +42,9 @@ export function update (req, res) {
       res.redirect('/animals')
     })
 }
+
+export function del (req, res) {
+  animals
+    .delete(req.params.id)
+    .then(() => { res.redirect('/animals') })
+}

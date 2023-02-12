@@ -39,6 +39,13 @@ describe('/', function () {
       })
   })
 
+  it('should delete an animal', function () {
+    return request(app)
+      .get('/animals/delete/123')
+      .expect(302)
+      .send({ name: 'Test animal', description: 'Test description', color: 'Test color', type: 'Test type' })
+  })
+
   it('should add an animal', function () {
     return request(app)
       .post('/animals')
