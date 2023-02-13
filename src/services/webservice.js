@@ -37,6 +37,13 @@ class WebService {
     return this.agent
       .delete(`${this.url}/${id}`)
   }
+
+  filter (path) {
+    return this.agent
+      .get(`${this.url}/filter?${path}`).then((data) => {
+        return data.body
+      })
+  }
 }
 
 export default WebService

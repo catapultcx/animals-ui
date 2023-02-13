@@ -52,4 +52,13 @@ describe('/', function () {
       .expect(302)
       .send({ name: 'Test animal', description: 'Test description', color: 'Test color', type: 'Test type' })
   })
+
+  it('should filter on an animal', function () {
+    return request(app)
+      .get('/animals/filter?name=Test animal')
+      .expect(200)
+      .then(data => {
+        expect(data.text).toContain('Animals')
+      })
+  })
 })

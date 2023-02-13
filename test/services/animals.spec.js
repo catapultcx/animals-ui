@@ -34,6 +34,8 @@ describe('Animals Service', function () {
       get: (match, data) => {
         if (match[1] === '/animals/' + UUID) {
           return {body: data};
+        } else if (match[1] === '/animals/filter?name=Tiger') {
+          return {body: data};
         } else if (match[1] === '/animals') {
           return {body: [data]};
         }
@@ -41,7 +43,6 @@ describe('Animals Service', function () {
       post: (match, data) => ({body: data}),
       put: (match, data) => ({body: data}),
       delete: () => {
-
       }
     }]);
   });
@@ -84,4 +85,7 @@ describe('Animals Service', function () {
     return service.delete(UUID).then((data) => expect(data).toBeUndefined());
   })
 
+  it('should filter on an animal', function () {
+    return service.filter('name=Tiger').then((data) => expect(data).toEqual(expectedAnimal));
+  })
 })

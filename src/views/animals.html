@@ -10,13 +10,41 @@
     <table class="govuk-table">
         <caption class="govuk-table__caption">Animals</caption>
         <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Name</th>
-            <th scope="col" class="govuk-table__header">Description</th>
-            <th scope="col" class="govuk-table__header">Type</th>
-            <th scope="col" class="govuk-table__header">Colour</th>
-            <th scope="col" class="govuk-table__header"></th>
-        </tr>
+        <form action="/animals/filter/{{filterText}}" method="get">
+            <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">
+                    Name
+                    <div class="govuk-form-group">
+                        <input class="govuk-input" id="filter" name="name" type="text"
+                               spellcheck="false" value="{{ filterText }}">
+                    </div>
+                </th>
+                <th scope="col" class="govuk-table__header">
+                    Description
+                    <div class="govuk-form-group">
+                        <input class="govuk-input" id="filter" name="description" type="text"
+                               spellcheck="false" value="{{ filterText }}">
+                    </div>
+                </th>
+                <th scope="col" class="govuk-table__header">
+                    Type
+                    <div class="govuk-form-group">
+                        <input class="govuk-input" id="filter" name="type" type="text"
+                               spellcheck="false" value="{{ filterText }}">
+                    </div>
+                </th>
+                <th scope="col" class="govuk-table__header">
+                    Colour
+                    <div class="govuk-form-group">
+                        <input class="govuk-input" id="filter" name="colour" type="text"
+                               spellcheck="false" value="{{ filterText }}">
+                    </div>
+                </th>
+                <th scope="col" class="govuk-table__header">
+                    <button class="govuk-button" type="submit">Submit</button>
+                </th>
+            </tr>
+        </form>
         </thead>
         <tbody class="govuk-table__body">
 

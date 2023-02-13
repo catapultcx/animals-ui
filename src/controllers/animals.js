@@ -48,3 +48,16 @@ export function del (req, res) {
     .delete(req.params.id)
     .then(() => { res.redirect('/animals') })
 }
+
+export function filter (req, res) {
+  let pathBuilder = '';
+  new URL(process.env.API_URL + req.originalUrl).searchParams.forEach(function (value, key) {
+    if(value) {
+      pathBuilder += key.toLowerCase() + "=" + value;
+    }
+  });
+  animals
+    .filter(pathBuilder)
+    .then((data) => { res.render('animals', { animals: data }) })
+}
+
