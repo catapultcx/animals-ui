@@ -36,6 +36,7 @@
     "nodemon": "^2.0.16",
     "nyc": "^15.1.0",
     "sass": "^1.52.1",
+    "superagent-mock": "^4.0.0",
     "supertest": "^6.2.3"
   }
 }
