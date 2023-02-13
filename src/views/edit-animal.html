@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="govuk-width-container app-site-width-container">
+
+	<h1 class="govuk-heading-l">Update an animal</h1>
+
+	<form action="/animals/save" method="post">
+		<input id="id" name="id" type="hidden" value="{{animal.id}}"/>
+		<div class="govuk-form-group">
+			<label class="govuk-label" for="name">
+				Name
+			</label>
+			<input class="govuk-input" id="name" name="name" type="text" spellcheck="false" value="{{ animal.name }}" required >
+		</div>
+		<div class="govuk-form-group">
+			<label class="govuk-label" for="description">
+				Description
+			</label>
+			<input class="govuk-input" id="description" name="description" type="text" spellcheck="false" value="{{ animal.description }}" required>
+		</div>
+		<div class="govuk-form-group">
+			<label class="govuk-label" for="group">
+				Group
+			</label>
+			<select class="govuk-select" id="group" name="group">
+				<option value="AMPHIBIAN" {{"selected" if animal.group === "AMPHIBIAN"}}>AMPHIBIAN</option>
+				<option value="BIRD" {{"selected" if animal.group === "BIRD"}}>BIRD</option>
+				<option value="FISH" {{"selected" if animal.group === "FISH"}} >FISH</option>
+				<option value="INVERTEBRATE" {{"selected" if animal.group === "INVERTEBRATE"}}>INVERTEBRATE</option>
+				<option value="MAMMALS" {{"selected" if animal.group === "MAMMALS"}}>MAMMALS</option>
+				<option value="REPTILES" {{"selected" if animal.group === "REPTILES"}}>REPTILES</option>
+			</select>
+		</div>
+		<div class="govuk-form-group">
+			<label class="govuk-label" for="color">
+				Colour
+			</label>
+			<input class="govuk-input" id="color" name="color" type="text" spellcheck="false" value="{{animal.color}}" required>
+		</div>
+		<div class="govuk-form-group">
+			<label class="govuk-label" for="type">
+				Type
+			</label>
+			<input class="govuk-input" id="type" name="type" type="text" spellcheck="false" value="{{animal.type}}" required>
+		</div>
+		<button class="govuk-button" type="submit">Submit</button>
+	</form>
+</div>
+{% endblock %}

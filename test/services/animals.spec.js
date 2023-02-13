@@ -1,15 +1,15 @@
 import { config } from 'dotenv'
-import Cats from '../../src/services/cats.js'
+import Animals from '../../src/services/animals.js'
 
 config()
-const service = new Cats(process.env.API_URL)
+const service = new Animals(process.env.API_URL)
 let created
 
-let item = { name: 'Tom', description: 'Friend of Jerry' }
+let item = { name: 'Tom', description: 'Friend of Jerry', "group" : "MAMMALS", "type" : "type", "color" : "color" }
 
-describe('cats', function () {
+describe('animals', function () {
 
-  it('get create a cat', function () {
+  it('create a cat', function () {
 
     return service.create(item).then((data) => {
       expect(data.name).toEqual(item.name)

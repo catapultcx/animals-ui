@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="govuk-width-container app-site-width-container">
+
+    <h1 class="govuk-heading-l">Animal</h1>
+	<a class="govuk-button" href="/animals/edit/{{ animal.id }}">Edit</a>
+	<a class="govuk-button" href="/animals/delete/{{ animal.id }}">Delete</a>
+    <table class="govuk-table">
+        <caption class="govuk-table__caption">Animal</caption>
+        <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Name</th>
+            <td class="govuk-table__cell">{{ animal.name }}</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Description</th>
+            <td class="govuk-table__cell">{{ animal.description }}</td>
+        </tr>
+       <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Group</th>
+            <td class="govuk-table__cell">{{ animal.group }}</td>
+        </tr>
+       <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Type</th>
+            <td class="govuk-table__cell">{{ animal.type }}</td>
+        </tr>
+       <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Colour</th>
+            <td class="govuk-table__cell">{{ animal.color }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

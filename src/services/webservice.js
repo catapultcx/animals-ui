@@ -18,9 +18,22 @@ class WebService {
       .then((data) => { return data.body })
   }
 
+ delete (id) {
+    return this.agent
+      .delete(`${this.url}/${id}`)
+      .then((data) => { return data.body })
+  }
+
   create (item) {
     return this.agent
       .post(this.url)
+      .send(item)
+      .then((data) => { return data.body })
+  }
+
+  save (item) {
+    return this.agent
+      .put(this.url)
       .send(item)
       .then((data) => { return data.body })
   }

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="govuk-width-container">
+	<a href="#" class="govuk-back-link">Back</a>
+	<main class="govuk-main-wrapper " id="main-content" role="main">
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-two-thirds">
+				<form action="/animals/{{id}}" method="post" novalidate>
+					<div class="govuk-form-group">
+						<fieldset class="govuk-fieldset">
+							<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+								<h1 class="govuk-fieldset__heading">
+									Are you sure you want to delete animal data ?
+								</h1>
+							</legend>
+							<div class="govuk-radios" data-module="govuk-radios">
+								<div class="govuk-radios__item">
+									<input class="govuk-radios__input" id="yes" name="delete" type="radio" value="yes">
+									<label class="govuk-label govuk-radios__label" for="yes">
+										Yes
+									</label>
+								</div>
+								<div class="govuk-radios__item">
+									<input class="govuk-radios__input" id="no" name="delete" type="radio" value="no">
+									<label class="govuk-label govuk-radios__label" for="no">
+										No
+									</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+					<button class="govuk-button" data-module="govuk-button">
+						Continue
+					</button>
+				</form>
+			</div>
+		</div>
+	</main>
+</div>
+{% endblock %}
