@@ -62,6 +62,7 @@
     </div>
   </form>
 
+  {% if animals | length %}
   <table class="govuk-table">
     <caption class="govuk-table__caption">
       Animals
@@ -90,5 +91,10 @@
       {% endfor %}
     </tbody>
   </table>
+  {% else %}
+  <div class="govuk-inset-text">
+    There are no animals. Please add an animal using the Add a Animal button provided.
+  </div>
+  {% endif %}
 </div>
 {% endblock %}
