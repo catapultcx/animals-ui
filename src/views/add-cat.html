@@ -4,7 +4,7 @@
 <div class="govuk-width-container app-site-width-container">
 
     <h1 class="govuk-heading-l">Add a Cat</h1>
-    
+
     <form action="/cats" method="post">
         <div class="govuk-form-group">
             <label class="govuk-label" for="name">
@@ -17,6 +17,12 @@
                 Description
             </label>
             <input class="govuk-input" id="description" name="description" type="text" spellcheck="false" required>
+        </div>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="color">
+                Color
+            </label>
+            <input type="color" id="color" name="color" value="#ff0000" style="width:30%;" required>
         </div>
 
         <button class="govuk-button" type="submit">Submit</button>

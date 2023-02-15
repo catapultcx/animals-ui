@@ -1,8 +1,8 @@
 import { config } from 'dotenv'
 config()
 
-import Cats from '../services/cats.js'
-const cats = new Cats(process.env.API_URL)
+import AnimalService from '../services/animalService.js'
+const cats = new AnimalService(process.env.API_URL, "cats")
 
 export function all (req, res) {
   cats
