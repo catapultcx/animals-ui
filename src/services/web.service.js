@@ -6,10 +6,13 @@ class WebService {
     this.agent = superagent;
   }
 
-  all() {
-    return this.agent.get(this.url).then((data) => {
-      return data.body;
-    });
+  all(query) {
+    return this.agent
+      .get(this.url)
+      .query(query)
+      .then((data) => {
+        return data.body;
+      });
   }
 
   get(id) {

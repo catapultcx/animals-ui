@@ -13,9 +13,13 @@ const TYPES = [
   "reptiles",
 ];
 
-export function all(req, res) {
-  service.all().then((data) => {
-    res.render("animals", { animals: data });
+export function all(req, res, next) {
+  service.all(req.query).then((data) => {
+    res.render("animals", {
+      types: TYPES,
+      animals: data,
+      filters: req.query,
+    });
   });
 }
 
@@ -34,30 +38,45 @@ export function addPage(req, res) {
   res.render("upsert-animal", { types: TYPES, heading: "Add a Animal" });
 }
 
-export function add(req, res) {
+export function add(req, res, next) {
   service.create(req.body).then(() => {
     res.redirect("/animals");
   });
 }
 
-export function updatePage(req, res) {
-  service.get(req.params.id).then((data) => {
-    res.render("upsert-animal", {
-      types: TYPES,
-      heading: "Update Animal",
-      animal: data,
+export function updatePage(req, res, next) {
+  service
+    .get(req.params.id)
+    .then((data) => {
+      res.render("upsert-animal", {
+        types: TYPES,
+        heading: "Update Animal",
+        animal: data,
+      });
+    })
+    .catch((error) => {
+      next(error);
     });
-  });
 }
 
-export function update(req, res) {
-  service.update({ ...req.body, id: req.params.id }).then(() => {
-    res.redirect("/animals");
-  });
+export function update(req, res, next) {
+  service
+    .update({ ...req.body, id: req.params.id })
+    .then(() => {
+      res.redirect("/animals");
+    })
+    .catch((error) => {
+      next(error);
+    });
 }
 
-export function deleteAnimal(req, res) {
-  service.delete(req.params.id).then(() => {
-    res.redirect("/animals");
-  });
+export function deleteAnimal(req, res, next) {
+  service
+    .delete(req.params.id)
+    .then(() => {
+      res.redirect("/animals");
+    })
+    .catch((error) => {
+      next(error);
+    });
 }

@@ -2,8 +2,65 @@
 
 <div class="govuk-width-container app-site-width-container">
   <h1 class="govuk-heading-l">Animals</h1>
+  
+  <form action="/animals" method="get">
+    <h2 class="govuk-heading-m">Filters</h2>
 
-  <a class="govuk-button" href="/animals/add">Add a Animal</a>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="name"> Name </label>
+          <input
+            class="govuk-input full"
+            id="name"
+            name="name"
+            type="text"
+            value="{{ filters.name }}"
+          />
+        </div>
+      </div>
+      <div class="govuk-grid-column-one-quarter">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="description"> Description </label>
+          <input
+            class="govuk-input full"
+            id="description"
+            name="description"
+            type="text"
+            value="{{ filters.description }}"
+          />
+        </div>
+      </div>
+      <div class="govuk-grid-column-one-quarter">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="colour"> Colour </label>
+          <input
+            class="govuk-input full"
+            id="colour"
+            name="colour"
+            type="text"
+            value="{{ filters.colour }}"
+          />
+        </div>
+      </div>
+      <div class="govuk-grid-column-one-quarter">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="type"> Type </label>
+          <select class="govuk-select govuk-!-width-full" id="type" name="type">
+            <option value="">Choose type</option>
+            {% for type in types %}
+            <option value="{{ type }}" {{ 'selected' if filters.type === type }}>{{ type | capitalize }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-button-group">
+      <button class="govuk-button govuk-button--secondary" type="submit">Search Animals</button>
+      <a class="govuk-button" href="/animals/add">Add a Animal</a>
+    </div>
+  </form>
 
   <table class="govuk-table">
     <caption class="govuk-table__caption">

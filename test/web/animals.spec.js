@@ -51,15 +51,12 @@ describe("/", function () {
   });
 
   it("should add a animal", function () {
-    return request(app)
-      .post("/animals")
-      .expect(302)
-      .send({
-        name: "Test animal",
-        description: "Test description",
-        colour: "red",
-        type: "fish",
-      });
+    return request(app).post("/animals").expect(302).send({
+      name: "Test animal",
+      description: "Test description",
+      colour: "red",
+      type: "fish",
+    });
   });
 
   it("should get update animal page", async () => {
@@ -76,6 +73,15 @@ describe("/", function () {
       .expect(200)
       .then((data) => {
         expect(data.text).toContain("Update Animal");
+      });
+  });
+
+  it("should show error page trying to view form to update non existing animal", async () => {
+    return request(app)
+      .get("/animals/123/update")
+      .expect(400)
+      .then((data) => {
+        expect(data.text).toContain("Sorry, the service is unavailable");
       });
   });
 
@@ -96,6 +102,23 @@ describe("/", function () {
         description: "Test description",
         colour: "red",
         type: "fish",
+      });
+  });
+
+  it("should show error page trying to update a non existing animal", async () => {
+    let item = {
+      name: "Tom",
+      description: "Friend of Jerry",
+      colour: "red",
+      type: "mammals",
+    };
+    const createdAnimal = await service.create(item);
+
+    return request(app)
+      .post("/animals/123/update")
+      .expect(400)
+      .then((data) => {
+        expect(data.text).toContain("Sorry, the service is unavailable");
       });
   });
 
@@ -126,5 +149,14 @@ describe("/", function () {
     return request(app)
       .get("/animals/" + createdAnimal.id + "/delete")
       .expect(302);
+  });
+
+  it("should show error page trying to delete a non existing animal", async () => {
+    return request(app)
+      .get("/animals/123/delete")
+      .expect(400)
+      .then((data) => {
+        expect(data.text).toContain("Sorry, the service is unavailable");
+      });
   });
 });
