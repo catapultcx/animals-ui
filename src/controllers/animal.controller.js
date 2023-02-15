@@ -31,11 +31,27 @@ export function get(req, res, next) {
 }
 
 export function addPage(req, res) {
-  res.render("add-animal", { types: TYPES });
+  res.render("upsert-animal", { types: TYPES, heading: "Add a Animal" });
 }
 
 export function add(req, res) {
   service.create(req.body).then(() => {
+    res.redirect("/animals");
+  });
+}
+
+export function updatePage(req, res) {
+  service.get(req.params.id).then((data) => {
+    res.render("upsert-animal", {
+      types: TYPES,
+      heading: "Update Animal",
+      animal: data,
+    });
+  });
+}
+
+export function update(req, res) {
+  service.update({ ...req.body, id: req.params.id }).then(() => {
     res.redirect("/animals");
   });
 }

@@ -54,7 +54,49 @@ describe("/", function () {
     return request(app)
       .post("/animals")
       .expect(302)
-      .send({ name: "Test animal", description: "Test description" });
+      .send({
+        name: "Test animal",
+        description: "Test description",
+        colour: "red",
+        type: "fish",
+      });
+  });
+
+  it("should get update animal page", async () => {
+    let item = {
+      name: "Tom",
+      description: "Friend of Jerry",
+      colour: "red",
+      type: "mammals",
+    };
+    const createdAnimal = await service.create(item);
+
+    return request(app)
+      .get("/animals/" + createdAnimal.id + "/update")
+      .expect(200)
+      .then((data) => {
+        expect(data.text).toContain("Update Animal");
+      });
+  });
+
+  it("should update a animal", async () => {
+    let item = {
+      name: "Tom",
+      description: "Friend of Jerry",
+      colour: "red",
+      type: "mammals",
+    };
+    const createdAnimal = await service.create(item);
+
+    return request(app)
+      .post("/animals/" + createdAnimal.id + "/update")
+      .expect(302)
+      .send({
+        name: "Test animal",
+        description: "Test description",
+        colour: "red",
+        type: "fish",
+      });
   });
 
   it("should view delete a animal btn", async () => {

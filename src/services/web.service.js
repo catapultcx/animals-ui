@@ -27,6 +27,15 @@ class WebService {
       });
   }
 
+  update(item) {
+    return this.agent
+      .put(this.url)
+      .send(item)
+      .then((data) => {
+        return data.body;
+      });
+  }
+
   delete(id) {
     return this.agent.delete(`${this.url}/${id}`);
   }

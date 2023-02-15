@@ -1,9 +1,12 @@
 {% extends "layout.html" %} {% block content %}
 
 <div class="govuk-width-container app-site-width-container">
-  <h1 class="govuk-heading-l">Add a Animal</h1>
+  <h1 class="govuk-heading-l">{{ heading }}</h1>
 
-  <form action="/animals" method="post">
+  <form
+    action="{{ '/animals/'+animal.id+'/update' if animal else '/animals' }}"
+    method="post"
+  >
     <div class="govuk-form-group">
       <label class="govuk-label" for="name"> Name </label>
       <input
@@ -13,6 +16,7 @@
         type="text"
         spellcheck="false"
         required
+        value="{{animal.name}}"
       />
     </div>
     <div class="govuk-form-group">
@@ -24,6 +28,7 @@
         type="text"
         spellcheck="false"
         required
+        value="{{animal.description}}"
       />
     </div>
     <div class="govuk-form-group">
@@ -35,7 +40,7 @@
         type="text"
         spellcheck="false"
         required
-        value="{{cat.colour}}"
+        value="{{animal.colour}}"
       />
     </div>
     <div class="govuk-form-group">
@@ -44,14 +49,9 @@
         <div class="govuk-radios" data-module="govuk-radios">
           {% for type in types %}
           <div class="govuk-radios__item">
-            <input
-              class="govuk-radios__input"
-              id="type-{{ loop.index }}"
-              name="type"
-              type="radio"
-              value="{{ type }}"
-              required
-            />
+            <input class="govuk-radios__input" id="type-{{ loop.index }}"
+            name="type" type="radio" value="{{ type }}" required {{ 'checked' if
+            animal and animal.type and animal.type.toLowerCase() === type }} />
             <label
               class="govuk-label govuk-radios__label"
               for="type-{{ loop.index }}"

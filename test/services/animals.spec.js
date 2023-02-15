@@ -35,6 +35,23 @@ describe("animals", function () {
     });
   });
 
+  it("update a created animal", async function () {
+    const updatedAnimal = {
+      ...created,
+      name: "updated-name",
+      description: "updated-desc",
+      colour: "updated-colour",
+      type: "fish",
+    };
+    return service.update(updatedAnimal).then((data) => {
+      expect(data.name).toEqual(updatedAnimal.name);
+      expect(data.description).toEqual(updatedAnimal.description);
+      expect(data.colour).toEqual(updatedAnimal.colour);
+      expect(data.type.toLowerCase()).toEqual(updatedAnimal.type);
+      expect(data.id).toEqual(updatedAnimal.id);
+    });
+  });
+
   it("delete a created animal", async function () {
     return service.delete(created.id).then((data) => {
       expect(data.res.statusCode).toEqual(200);
