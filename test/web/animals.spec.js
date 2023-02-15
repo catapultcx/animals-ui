@@ -56,4 +56,33 @@ describe("/", function () {
       .expect(302)
       .send({ name: "Test animal", description: "Test description" });
   });
+
+  it("should view delete a animal btn", async () => {
+    let item = {
+      name: "Tom",
+      description: "Friend of Jerry",
+      colour: "red",
+      type: "mammals",
+    };
+    const createdAnimal = await service.create(item);
+    return request(app)
+      .get("/animals/" + createdAnimal.id)
+      .expect(200)
+      .then((data) => {
+        expect(data.text).toContain("Delete");
+      });
+  });
+
+  it("should delete a animal", async () => {
+    let item = {
+      name: "uniqueName Tom",
+      description: "Friend of Jerry",
+      colour: "red",
+      type: "mammals",
+    };
+    const createdAnimal = await service.create(item);
+    return request(app)
+      .get("/animals/" + createdAnimal.id + "/delete")
+      .expect(302);
+  });
 });

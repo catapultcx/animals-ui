@@ -39,3 +39,9 @@ export function add(req, res) {
     res.redirect("/animals");
   });
 }
+
+export function deleteAnimal(req, res) {
+  service.delete(req.params.id).then(() => {
+    res.redirect("/animals");
+  });
+}

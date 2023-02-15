@@ -21,9 +21,6 @@ describe("animals", function () {
       expect(data.type.toLowerCase()).toEqual(item.type);
       expect(data.id).toBeDefined();
 
-      // data.name.should.eql(item.name)
-      // data.description.should.eql(item.description)
-      // data.should.have.property('id')
       created = data;
     });
   });
@@ -35,10 +32,12 @@ describe("animals", function () {
       expect(data.colour).toEqual(item.colour);
       expect(data.type.toLowerCase()).toEqual(item.type);
       expect(data.id).toBeDefined();
+    });
+  });
 
-      // data.name.should.eql(data.name)
-      // data.id.should.eql(data.id)
-      // data.description.should.eql(data.description)
+  it("delete a created animal", async function () {
+    return service.delete(created.id).then((data) => {
+      expect(data.res.statusCode).toEqual(200);
     });
   });
 
