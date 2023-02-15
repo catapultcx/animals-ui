@@ -4,6 +4,15 @@ config();
 import AnimalService from "../services/animal.service.js";
 const service = new AnimalService(process.env.API_URL);
 
+const TYPES = [
+  "amphibian",
+  "bird",
+  "fish",
+  "invertebrate",
+  "mammals",
+  "reptiles",
+];
+
 export function all(req, res) {
   service.all().then((data) => {
     res.render("animals", { animals: data });
@@ -22,7 +31,7 @@ export function get(req, res, next) {
 }
 
 export function addPage(req, res) {
-  res.render("add-animal");
+  res.render("add-animal", { types: TYPES });
 }
 
 export function add(req, res) {

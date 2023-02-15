@@ -1,5 +1,10 @@
+import { config } from "dotenv";
 import request from "supertest";
+import AnimalService from "../../src/services/animal.service";
 import app from "../../src/app";
+
+config();
+const service = new AnimalService(process.env.API_URL);
 
 describe("/", function () {
   it("should get animals", function () {
@@ -11,14 +16,21 @@ describe("/", function () {
       });
   });
 
-  // it("should get a animal", function () {
-  //   return request(app)
-  //     .get("/animals/123")
-  //     .expect(200)
-  //     .then((data) => {
-  //       expect(data.text).toContain("Animal");
-  //     });
-  // });
+  it("should get a animal", async () => {
+    let item = {
+      name: "Tom",
+      description: "Friend of Jerry",
+      colour: "red",
+      type: "mammals",
+    };
+    const createdAnimal = await service.create(item);
+    return request(app)
+      .get("/animals/" + createdAnimal.id)
+      .expect(200)
+      .then((data) => {
+        expect(data.text).toContain("Animal");
+      });
+  });
 
   it("should fail to get a animal", function () {
     return request(app)
