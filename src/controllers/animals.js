@@ -1,7 +1,7 @@
 import { config } from 'dotenv'
 config()
 
-import AnimalService from '../services/animalService.js'
+import AnimalService from '../services/animal-service.js'
 
 export const animalControllerBuilder = (type) => {
   const animalService = new AnimalService(process.env.API_URL, `${type}s`)

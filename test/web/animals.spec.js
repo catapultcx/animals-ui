@@ -1,7 +1,7 @@
 import request from 'supertest'
 import app from '../../src/app'
 import {supportedAnimalTypes} from "../../src/app-config.js";
-import AnimalService from "../../src/services/animalService.js";
+import AnimalService from "../../src/services/animal-service.js";
 
 describe.each(supportedAnimalTypes)(`/%ss`, function (type) {
   const name = type.charAt(0).toUpperCase() + type.slice(1);

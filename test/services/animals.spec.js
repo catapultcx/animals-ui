@@ -1,5 +1,5 @@
 import {config} from 'dotenv'
-import AnimalService from "../../src/services/animalService.js";
+import AnimalService from "../../src/services/animal-service.js";
 import {supportedAnimalTypes} from "../../src/app-config.js";
 
 config()
