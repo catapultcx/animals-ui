@@ -1,6 +1,6 @@
 import {config} from 'dotenv'
 import AnimalService from "../../src/services/animal-service.js";
-import {supportedAnimalTypes} from "../../src/app-config.js";
+import {supportedAnimalTypes} from "../test-config.js";
 
 config()
 describe.each(supportedAnimalTypes)("Running %s", (type) => {

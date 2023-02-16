@@ -13,7 +13,7 @@ class AnimalsService {
             .then((data) => { return data.body })
     }
 
-    register(type, group) {
+    register({type, group}) {
         return this.agent
             .get(`${this.url}/register/${group}/${type}`)
             .then((response) => { return response.ok })

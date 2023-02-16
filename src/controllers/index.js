@@ -1,7 +1,12 @@
-import {supportedAnimalTypes} from "../app-config.js";
+import AnimalsService from "../services/animals-service.js";
+import {config} from "dotenv";
 
-export function index (req, res) {
-  res.status(200).render('index', {types: supportedAnimalTypes})
+config()
+const service = new AnimalsService(process.env.API_URL)
+
+export async function index (req, res) {
+  const types = await service.types();
+  res.status(200).render('index', {types: types})
 }
 
 export function login (req, res) {

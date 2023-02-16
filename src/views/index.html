@@ -10,10 +10,10 @@
             <p style="padding-top: 20px">Use this GOV.UK service to do some things:</p>
             <ul class="govuk-list">
                 <li><a class="govuk-link" href="/animals">List all animals</a></li>
+                <li><a class="govuk-link" href="/register">Register a new type</a></li>
                 {% for type in types %}
                 <li>
-
-                        <a class="govuk-link" href="/{{ type }}s">Manage {{ type }}s</a>
+                    <a class="govuk-link" href="/{{ type }}s">Manage {{ type }}s</a>
                 </li>
                 {% endfor %}
             </ul>
