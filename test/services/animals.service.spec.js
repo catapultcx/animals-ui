@@ -1,5 +1,5 @@
 import {config} from 'dotenv'
-import AnimalRootService from "../../src/services/animal-root-service.js";
+import AnimalRootService from "../../src/services/animals-service.js";
 
 config()
 describe("Animals Root", () => {

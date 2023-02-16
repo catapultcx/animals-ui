@@ -1,6 +1,6 @@
 import superagent from 'superagent'
 
-class AnimalFilterService {
+class AnimalsService {
     constructor (url) {
         this.url = url
         this.agent = superagent
@@ -15,4 +15,4 @@ class AnimalFilterService {
 
 }
 
-export default AnimalFilterService
+export default AnimalsService
