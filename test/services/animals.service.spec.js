@@ -15,4 +15,11 @@ describe("Animals Root", () => {
         })
     })
 
+    it('should register new types', () => {
+        const type = Math.random().toString(36).slice(2, 7); // Creating random type names
+        return service.register(type, "mammals").then((data) => {
+            expect(data).toBeTruthy();
+        })
+    })
+
 })
