@@ -7,7 +7,7 @@ const service = new AnimalRootService(process.env.API_URL)
 
 export function index(req, res) {
     service
-        .filter({})
+        .filter(req.query)
         .then(
             (data) => {
                 res.render('animals', {
