@@ -1,4 +1,4 @@
-import {animalControllerBuilder} from "../controllers/animals.js";
+import {animalControllerBuilder} from "../controllers/animal.js";
 import express from "express";
 
 export const animalRouteBuilder = (type) => {
