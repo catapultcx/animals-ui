@@ -1,5 +1,3 @@
-import AnimalService from "./services/animalService.js";
-
 export const supportedAnimalTypes = [
     "cat",
     "dog",
@@ -11,5 +9,3 @@ export const supportedAnimalTypes = [
     "frog",
     "iguana"
 ]
-
-export const animalServices = (url) => supportedAnimalTypes.map(type => [type, new AnimalService(url, `${type}s`)])

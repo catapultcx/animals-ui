@@ -3,9 +3,10 @@ import express from 'express'
 import nunjucks from 'nunjucks'
 import formData from 'express-form-data'
 import path from 'path'
-import cats from './routes/cats.js'
 import index from './routes/index.js'
 import { initialiseErrors } from './errors.js'
+import {supportedAnimalTypes} from "./app-config.js";
+import {animalRouteBuilder} from "./routes/animals.js";
 
 const app = express()
 const govkukFrontendPath = 'node_modules/govuk-frontend'
@@ -27,8 +28,9 @@ app.use('/assets/js/all.js', express.static(path.join(govkukFrontendPath, '../go
 app.use('/public', express.static(path.join('./public')))
 
 app.use('/', index)
-app.use('/cats', cats)
-
+supportedAnimalTypes.forEach((type) => {
+    app.use(`/${type}s`, animalRouteBuilder(type))
+})
 initialiseErrors(app)
 
 export default app

@@ -3,9 +3,9 @@
 
 <div class="govuk-width-container app-site-width-container">
 
-    <h1 class="govuk-heading-l">Add a Cat</h1>
+    <h1 class="govuk-heading-l">Add a {{ name }}</h1>
 
-    <form action="/cats" method="post">
+    <form action="/{{ type }}s" method="post">
         <div class="govuk-form-group">
             <label class="govuk-label" for="name">
                 Name

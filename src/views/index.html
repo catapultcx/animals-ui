@@ -9,9 +9,12 @@
 
             <p style="padding-top: 20px">Use this GOV.UK service to do some things:</p>
             <ul class="govuk-list">
+                {% for type in types %}
                 <li>
-                    <a class="govuk-link" href="/cats">Manage cats</a>
+
+                        <a class="govuk-link" href="/{{ type }}s">Manage {{ type }}s</a>
                 </li>
+                {% endfor %}
             </ul>
         </div>
     {% if not user %}
