@@ -7,6 +7,7 @@ export const animalRouteBuilder = (type) => {
     router.get('/', controller.all)
     router.get('/add', controller.addPage)
     router.get('/:id', controller.get)
+    router.get('/:id/delete', controller.delete)
     router.post('/', controller.add)
     return router;
 }

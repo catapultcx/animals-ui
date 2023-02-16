@@ -1,10 +1,11 @@
 import request from 'supertest'
 import app from '../../src/app'
 import {supportedAnimalTypes} from "../../src/app-config.js";
+import AnimalService from "../../src/services/animalService.js";
 
 describe.each(supportedAnimalTypes)(`/%ss`, function (type) {
   const name = type.charAt(0).toUpperCase() + type.slice(1);
-
+  const service = new AnimalService(process.env.API_URL, `${type}s`)
   it(`should get ${type}s`, function () {
     return request(app)
       .get(`/${type}s`)
@@ -12,6 +13,26 @@ describe.each(supportedAnimalTypes)(`/%ss`, function (type) {
       .then(data => {
         expect(data.text).toContain(`${name}s`)
       })
+  })
+
+  it(`should delete a ${type}`, async function () {
+      const item = {name: 'Tom', description: 'Friend of Jerry', color: "blue"}
+      const created = await service.create(item);
+      return request(app)
+          .get(`/${type}s/${created.id}/delete`)
+          .expect(302)
+          .then(data => {
+              expect(data.text).toContain(`Found. Redirecting to /${type}s`)
+          })
+  })
+
+    it(`should fail to delete a ${type}`, function () {
+    return request(app)
+        .get(`/${type}s/123/delete`)
+        .expect(302)
+        .then(data => {
+          expect(data.text).toContain(`Found. Redirecting to /${type}s?error=123`)
+        })
   })
 
   it(`should get a ${type}`, function () {

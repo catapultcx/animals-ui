@@ -41,4 +41,10 @@ describe.each(supportedAnimalTypes)("Running %s", (type) => {
             expect(data.length).toBeGreaterThan(0)
         })
     })
+
+    it(`delete ${type}`, function () {
+        return service.delete(created.id).then((data) => {
+            expect(data).toBe(created.id)
+        })
+    })
 })

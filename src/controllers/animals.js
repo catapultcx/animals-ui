@@ -28,6 +28,12 @@ export const animalControllerBuilder = (type) => {
       animalService
           .create(req.body)
           .then(() => { res.redirect(`/${type}s`) })
+    },
+    delete: (req, res) => {
+      animalService
+          .delete(req.params.id)
+          .then(() => { res.redirect(`/${type}s`) })
+          .catch(() => { res.redirect(`/${type}s?error=${req.params.id}`) })
     }
   })
 
