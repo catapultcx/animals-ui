@@ -8,7 +8,7 @@ describe.each(supportedAnimalTypes)(`/%ss`, function (type) {
     const service = new AnimalService(process.env.API_URL, `${type}s`)
     it(`should get ${type}s`, function () {
         return request(app)
-            .get(`/${type}s`)
+            .get(`/types/${type}`)
             .expect(200)
             .then(data => {
                 expect(data.text).toContain(`${name}s`)
@@ -19,10 +19,10 @@ describe.each(supportedAnimalTypes)(`/%ss`, function (type) {
         const item = {name: 'Tom', description: 'Friend of Jerry', color: "blue"}
         const created = await service.create(item);
         return request(app)
-            .get(`/${type}s/${created.id}/delete`)
+            .get(`/types/${type}/${created.id}/delete`)
             .expect(302)
             .then(data => {
-                expect(data.text).toContain(`Found. Redirecting to /${type}s`)
+                expect(data.text).toContain(`Found. Redirecting to /types/${type}`)
             })
     })
 
@@ -30,7 +30,7 @@ describe.each(supportedAnimalTypes)(`/%ss`, function (type) {
         const item = {name: 'Tom', description: 'Friend of Jerry', color: "blue"}
         const created = await service.create(item);
         return request(app)
-            .get(`/${type}s/${created.id}/delete?loc=/newloc`)
+            .get(`/types/${type}/${created.id}/delete?loc=/newloc`)
             .expect(302)
             .then(data => {
                 expect(data.text).toContain(`Found. Redirecting to /newloc`)
@@ -39,16 +39,16 @@ describe.each(supportedAnimalTypes)(`/%ss`, function (type) {
 
     it(`should fail to delete a ${type}`, function () {
         return request(app)
-            .get(`/${type}s/123/delete`)
+            .get(`/types/${type}/123/delete`)
             .expect(302)
             .then(data => {
-                expect(data.text).toContain(`Found. Redirecting to /${type}s?error=123`)
+                expect(data.text).toContain(`Found. Redirecting to /types/${type}?error=123`)
             })
     })
 
     it(`should get a ${type}`, function () {
         return request(app)
-            .get(`/${type}s/123`)
+            .get(`/types/${type}/123`)
             .expect(200)
             .then(data => {
                 expect(data.text).toContain(`${name}`)
@@ -57,16 +57,25 @@ describe.each(supportedAnimalTypes)(`/%ss`, function (type) {
 
     it(`should get add ${type} page`, function () {
         return request(app)
-            .get(`/${type}s/add`)
+            .get(`/types/${type}/add`)
             .expect(200)
             .then(data => {
                 expect(data.text).toContain(`Add a ${name}`)
             })
     })
 
+    it(`should get 404 page if not found`, function () {
+        return request(app)
+            .get(`/types/fron/no/one`)
+            .expect(404)
+            .then(data => {
+                expect(data.text).toContain(`Page not found`)
+            })
+    })
+
     it(`should add a ${type}`, function () {
         return request(app)
-            .post(`/${type}s`)
+            .post(`/types/${type}`)
             .expect(302)
             .send({name: `Test ${type}`, description: 'Test description', color: "blue"})
     })

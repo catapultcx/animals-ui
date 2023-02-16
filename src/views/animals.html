@@ -6,6 +6,7 @@
     <h1 class="govuk-heading-l">Animals</h1>
 
     <a class="govuk-button" href="/animals/add">Add an animal</a>
+    <a class="govuk-button" href="/register">Register a new type</a>
 
     <table class="govuk-table">
         <caption class="govuk-table__caption">Please click on a value, to filter or remove filter.</caption>
@@ -38,10 +39,10 @@
             <td class="govuk-table__cell"><a href="#" onclick='{{typeScript}}'>{{ animal.type }}</a></td>
             <td class="govuk-table__cell">{{ animal.group }}</td>
             <td class="govuk-table__cell">
-                <a href="/{{ animal.type }}s/{{ animal.id }}" class="govuk-link">View</a>
+                <a href="/types/{{ animal.type }}/{{ animal.id }}" class="govuk-link">View</a>
             </td>
             <td class="govuk-table__cell">
-                <a href="/{{ animal.type }}s/{{ animal.id }}/delete?loc=/animals" class="govuk-link">Delete</a>
+                <a href="/types/{{ animal.type }}/{{ animal.id }}/delete?loc=/animals" class="govuk-link">Delete</a>
             </td>
         </tr>
 

@@ -5,7 +5,7 @@
 
     <h1 class="govuk-heading-l">{{ name }}s</h1>
 
-    <a class="govuk-button" href="/{{ type }}s/add">Add a {{ name }}</a>
+    <a class="govuk-button" href="/types/{{ type }}/add">Add a {{ name }}</a>
 
     <table class="govuk-table">
         <caption class="govuk-table__caption">{{ name }}s</caption>
@@ -28,10 +28,10 @@
                 <div style={{["height:25px;width:40px;background-color:",animal.color]|join}}></div>
             </td>
             <td class="govuk-table__cell">
-                <a href="/{{ animal.type }}s/{{ animal.id }}" class="govuk-link">View</a>
+                <a href="/types/{{ animal.type }}/{{ animal.id }}" class="govuk-link">View</a>
             </td>
             <td class="govuk-table__cell">
-                <a href="/{{ animal.type }}s/{{ animal.id }}/delete" class="govuk-link">Delete</a>
+                <a href="/types/{{ animal.type }}/{{ animal.id }}/delete" class="govuk-link">Delete</a>
             </td>
         </tr>
 

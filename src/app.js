@@ -7,8 +7,7 @@ import index from './routes/index.js'
 import animals from './routes/animals.js'
 import register from './routes/register.js'
 import {initialiseErrors} from './errors.js'
-import {animalRouteBuilder} from "./routes/animal.js";
-import AnimalsService from "./services/animals-service.js";
+import animal from "./routes/animal.js";
 
 const app = express()
 const govkukFrontendPath = 'node_modules/govuk-frontend'
@@ -32,12 +31,8 @@ app.use('/public', express.static(path.join('./public')))
 app.use('/', index)
 app.use('/animals', animals)
 app.use('/register', register)
+app.use('/types', animal)
 
-const animalService = new AnimalsService(process.env.API_URL)
-const types = await animalService.types();
-types.forEach((type) => {
-    app.use(`/${type}s`, animalRouteBuilder(type))
-})
 initialiseErrors(app)
 
 export default app
