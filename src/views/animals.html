@@ -8,7 +8,7 @@
 <!--    <a class="govuk-button" href="/{{ type }}s/add">Add a {{ name }}</a>-->
 
     <table class="govuk-table">
-        <caption class="govuk-table__caption">{{ name }}</caption>
+        <caption class="govuk-table__caption">Please click on a value, to filter or remove filter.</caption>
         <thead class="govuk-table__head">
         <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Name</th>
@@ -24,18 +24,24 @@
 
         {% for animal in animals %}
         <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">{{ animal.name }}</th>
-            <td class="govuk-table__cell">{{ animal.description }}</td>
+            {% set nameScript = ['addFilterToURL("names","' , animal.name, '")']|join %}
+            <th scope="row" class="govuk-table__header"><a  href="#" onclick='{{nameScript}}'>{{ animal.name }}</a></th>
+            {% set descScript = ['addFilterToURL("descriptions","' , animal.description, '")']|join %}
+            <td class="govuk-table__cell"><a  href="#" onclick='{{descScript}}'>{{ animal.description }}</a></td>
+            {% set colorScript = ['addFilterToURL("colors","' , animal.color, '")']|join %}
             <td class="govuk-table__cell">
-                <div style={{["height:25px;width:40px;background-color:",animal.color]|join}}></div>
+                <a href="#" onclick='{{colorScript}}' >
+                    <div style={{["height:25px;width:40px;background-color:",animal.color]|join}}></div>
+                </a>
             </td>
-            <td class="govuk-table__cell">{{ animal.type }}</td>
+            {% set typeScript = ['addFilterToURL("types","' , animal.type, '")']|join %}
+            <td class="govuk-table__cell"><a href="#" onclick='{{typeScript}}'>{{ animal.type }}</a></td>
             <td class="govuk-table__cell">{{ animal.group }}</td>
             <td class="govuk-table__cell">
                 <a href="/{{ animal.type }}s/{{ animal.id }}" class="govuk-link">View</a>
             </td>
             <td class="govuk-table__cell">
-                <a href="/{{ animal.type }}s/{{ animal.id }}/delete" class="govuk-link">Delete</a>
+                <a href="/{{ animal.type }}s/{{ animal.id }}/delete?loc=/animals" class="govuk-link">Delete</a>
             </td>
         </tr>
 

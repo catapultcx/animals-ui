@@ -81,3 +81,24 @@ function getMacro (data) {
   return '{% import \'engine-form.html\' as forms %} \n' +
     '{{ form.engine_form(data=' + data + ') }}'
 }
+
+function addFilterToURL(filter, value) {
+  const urlParams = new URLSearchParams(window.location.search);
+  const current  = urlParams.get(filter)
+  if(!current || current.length === 0) {
+    urlParams.set(filter, value)
+  } else {
+    const values = current.split(",");
+    const index = values.indexOf(value);
+    if(index > -1) {
+      const newValue = values.filter((k) => value !== k).join(",");
+      urlParams.set(filter, newValue);
+    } else {
+      urlParams.set(filter, current + "," + value);
+    }
+
+  }
+
+  window.location.search = urlParams;
+
+}

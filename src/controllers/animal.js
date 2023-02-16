@@ -30,10 +30,12 @@ export const animalControllerBuilder = (type) => {
           .then(() => { res.redirect(`/${type}s`) })
     },
     delete: (req, res) => {
+      const loc = req.query.loc
+      const redirect = loc ? loc : `/${type}s`
       animalService
           .delete(req.params.id)
-          .then(() => { res.redirect(`/${type}s`) })
-          .catch(() => { res.redirect(`/${type}s?error=${req.params.id}`) })
+          .then(() => { res.redirect(redirect) })
+          .catch(() => { res.redirect(`${redirect}?error=${req.params.id}`) })
     }
   })
 
