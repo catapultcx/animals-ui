@@ -3,17 +3,19 @@
 
 <div class="govuk-width-container app-site-width-container">
 
-    <h1 class="govuk-heading-l">{{ name }}s</h1>
+    <h1 class="govuk-heading-l">{{ name }}</h1>
 
-    <a class="govuk-button" href="/{{ type }}s/add">Add a {{ name }}</a>
+<!--    <a class="govuk-button" href="/{{ type }}s/add">Add a {{ name }}</a>-->
 
     <table class="govuk-table">
-        <caption class="govuk-table__caption">{{ name }}s</caption>
+        <caption class="govuk-table__caption">{{ name }}</caption>
         <thead class="govuk-table__head">
         <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Name</th>
             <th scope="col" class="govuk-table__header">Description</th>
             <th scope="col" class="govuk-table__header">Color</th>
+            <th scope="col" class="govuk-table__header">Type</th>
+            <th scope="col" class="govuk-table__header">Group</th>
             <th scope="col" class="govuk-table__header"></th>
             <th scope="col" class="govuk-table__header"></th>
         </tr>
@@ -27,6 +29,8 @@
             <td class="govuk-table__cell">
                 <div style={{["height:25px;width:40px;background-color:",animal.color]|join}}></div>
             </td>
+            <td class="govuk-table__cell">{{ animal.type }}</td>
+            <td class="govuk-table__cell">{{ animal.group }}</td>
             <td class="govuk-table__cell">
                 <a href="/{{ animal.type }}s/{{ animal.id }}" class="govuk-link">View</a>
             </td>

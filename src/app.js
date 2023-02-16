@@ -4,6 +4,7 @@ import nunjucks from 'nunjucks'
 import formData from 'express-form-data'
 import path from 'path'
 import index from './routes/index.js'
+import animals from './routes/animals.js'
 import { initialiseErrors } from './errors.js'
 import {supportedAnimalTypes} from "./app-config.js";
 import {animalRouteBuilder} from "./routes/animal.js";
@@ -28,6 +29,7 @@ app.use('/assets/js/all.js', express.static(path.join(govkukFrontendPath, '../go
 app.use('/public', express.static(path.join('./public')))
 
 app.use('/', index)
+app.use('/animals', animals)
 supportedAnimalTypes.forEach((type) => {
     app.use(`/${type}s`, animalRouteBuilder(type))
 })
