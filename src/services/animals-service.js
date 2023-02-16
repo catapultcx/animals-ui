@@ -18,6 +18,17 @@ class AnimalsService {
             .get(`${this.url}/register/${group}/${type}`)
             .then((response) => { return response.ok })
     }
+
+    types() {
+        return this.agent
+            .get(`${this.url}/types`)
+            .then((response) => { return response.body })
+    }
+    groups() {
+        return this.agent
+            .get(`${this.url}/groups`)
+            .then((response) => { return response.body })
+    }
 }
 
 export default AnimalsService
