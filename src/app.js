@@ -6,7 +6,7 @@ import path from 'path'
 import index from './routes/index.js'
 import { initialiseErrors } from './errors.js'
 import {supportedAnimalTypes} from "./app-config.js";
-import {animalRouteBuilder} from "./routes/animals.js";
+import {animalRouteBuilder} from "./routes/animal.js";
 
 const app = express()
 const govkukFrontendPath = 'node_modules/govuk-frontend'
