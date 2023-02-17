@@ -10,12 +10,18 @@ export async function index(req, res) {
     const groups = await service.groups();
     res.render('register', {
         types,
-        groups
+        groups,
+        error: req.query.error
     })
 }
 
-export function add (req, res) {
+export function add(req, res) {
     service
         .register(req.body)
-        .then(() => { res.redirect(`/`) })
+        .then(() => {
+            res.redirect(`/animals`)
+        })
+        .catch((data) => {
+            res.redirect("/register?error=" + data.status)
+        })
 }

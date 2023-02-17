@@ -28,4 +28,5 @@ export function add(req, res) {
     animalService
         .create(req.body)
         .then(() => { res.redirect("/animals") })
+        .catch(() => { res.redirect("/animals/add?error=true") })
 }

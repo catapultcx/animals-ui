@@ -18,4 +18,11 @@ describe(`/register`, function () {
             .expect(302)
             .send({type, group: 'mammals'})
     })
+
+    it(`should post a type`, function () {
+        return request(app)
+            .post(`/register`)
+            .expect(302)
+            .send({type:"cat", group: 'mammals'})
+    })
 })

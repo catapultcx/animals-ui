@@ -25,4 +25,11 @@ describe(`/animals`, function () {
             .expect(302)
             .send({type: "cat", name:'Test cat', description: 'Test description', color: "blue"})
     })
+
+    it(`should add a animal}`, function () {
+        return request(app)
+            .post(`/animals/add`)
+            .expect(302)
+            .send({type: "cat", name:null, description: 'Test description', color: "blue"})
+    })
 })
