@@ -19,14 +19,14 @@ describe(`/animals`, function () {
                 expect(data.text).toContain(`Add an animal`)
             })
     })
-    it(`should add a animal}`, function () {
+    it(`should add a animal`, function () {
         return request(app)
             .post(`/animals/add`)
             .expect(302)
             .send({type: "cat", name:'Test cat', description: 'Test description', color: "blue"})
     })
 
-    it(`should add a animal}`, function () {
+    it(`should handle error when adding an animal`, function () {
         return request(app)
             .post(`/animals/add`)
             .expect(302)

@@ -16,10 +16,6 @@ describe.each(supportedAnimalTypes)("Running %s", (type) => {
             expect(data.name).toEqual(item.name)
             expect(data.description).toEqual(item.description)
             expect(data.id).toBeDefined()
-
-            // data.name.should.eql(item.name)
-            // data.description.should.eql(item.description)
-            // data.should.have.property('id')
             created = data
         })
     })
@@ -29,10 +25,6 @@ describe.each(supportedAnimalTypes)("Running %s", (type) => {
             expect(data.name).toEqual(item.name)
             expect(data.description).toEqual(item.description)
             expect(data.id).toBeDefined()
-
-            // data.name.should.eql(data.name)
-            // data.id.should.eql(data.id)
-            // data.description.should.eql(data.description)
         })
     })
 
