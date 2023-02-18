@@ -1,10 +1,12 @@
 import {config} from 'dotenv'
 import AnimalRootService from "../../src/services/animals-service.js";
+import AnimalService from "../../src/services/animal-service.js";
 
 config()
 describe("Animals Service", () => {
     const service = new AnimalRootService(process.env.API_URL)
-
+    const animalService = new AnimalService(process.env.API_URL, "cats")
+    animalService.create({name: `Garfield`, description: 'Test description', color: "blue"})
     const filterCases = [
         {types: "cat"},
         {types: "cat", names:"Garfield"}
