@@ -6,6 +6,7 @@ import path from 'path'
 import cats from './routes/cats.js'
 import index from './routes/index.js'
 import { initialiseErrors } from './errors.js'
+import animals from "./routes/animals.js";
 
 const app = express()
 const govkukFrontendPath = 'node_modules/govuk-frontend'
@@ -28,6 +29,7 @@ app.use('/public', express.static(path.join('./public')))
 
 app.use('/', index)
 app.use('/cats', cats)
+app.use('/animals', animals)
 
 initialiseErrors(app)
 
