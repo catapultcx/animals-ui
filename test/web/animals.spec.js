@@ -21,7 +21,16 @@ describe('/', function () {
       })
   })
 
-  it('should get add animal page', function () {
+  it('should get edit animal', function () {
+    return request(app)
+        .get('/animals/edit/1')
+        .expect(200)
+        .then(data => {
+          expect(data.text).toContain('Animal')
+        })
+  })
+
+  it('should get add animal', function () {
     return request(app)
       .get('/animals/add')
       .expect(200)
@@ -35,6 +44,13 @@ describe('/', function () {
       .post('/animals')
       .expect(302)
       .send({ id: "456", name: 'Test cat', description: 'Test description' })
+  })
+
+  it('should update an animal', function () {
+    return request(app)
+        .put('/animals/456')
+        .expect(302)
+        .send({ id: "456", name: 'Test cat', description: 'Test description' })
   })
 
   it('should delete an animal', function () {

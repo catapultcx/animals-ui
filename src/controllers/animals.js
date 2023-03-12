@@ -16,6 +16,11 @@ export function get (req, res) {
         .then((data) => { res.render('view-animal', { animal: data }) })
 }
 
+export function edit (req, res) {
+    animals
+        .get(req.params.id)
+        .then((data) => { res.render('edit-animal', { animal: data }) })
+}
 export function addPage (req, res) {
     res.render('add-animal')
 }
@@ -24,6 +29,13 @@ export function add (req, res) {
     animals
         .create(req.body)
         .then(() => { res.redirect('/animals') })
+}
+
+export function update(req, res) {
+    animals
+        .update(req.params.id, req.body)
+        .then(() => {
+            res.redirect('/animals') })
 }
 
 export function deleteAnimal (req, res) {

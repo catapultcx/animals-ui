@@ -38,4 +38,17 @@ describe('animals', function () {
       expect(data.length).toBeGreaterThan(0)
     })
   })
+
+  it('updates an animal', function () {
+    created.colour = "new colour";
+    return service.update(created.id, created).then((data) => {
+      expect(data.colour).toEqual("new colour")
+    })
+  })
+
+  it('deletes an animal', function () {
+    return service.delete(created.id, created).then((data) => {
+      expect(data.status).toEqual(200)
+    })
+  })
 })
