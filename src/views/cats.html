@@ -14,6 +14,8 @@
             <th scope="col" class="govuk-table__header">Name</th>
             <th scope="col" class="govuk-table__header">Description</th>
             <th scope="col" class="govuk-table__header"></th>
+            <th scope="col" class="govuk-table__header"></th>
+            <th scope="col" class="govuk-table__header"></th>
         </tr>
         </thead>
         <tbody class="govuk-table__body">
@@ -24,6 +26,12 @@
             <td class="govuk-table__cell">{{ cat.description }}</td>
             <td class="govuk-table__cell">
                 <a href="/cats/{{ cat.id }}" class="govuk-link">View</a>
+            </td>
+            <td class="govuk-table__cell">
+                <a href="/cats/update/{{ cat.id }}" class="govuk-link">Update</a>
+            </td>
+            <td class="govuk-table__cell">
+                <a href="/cats/remove/{{ cat.id }}" class="govuk-link">Remove</a>
             </td>
         </tr>
 

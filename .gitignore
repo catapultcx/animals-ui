@@ -11,3 +11,5 @@ TESTS-sonar.xml
 .terraform
 *.tfstate*
 /public
+/.settings/
+/.project

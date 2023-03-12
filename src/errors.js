@@ -16,6 +16,9 @@ function initialiseErrors (app) {
       case 404:
         page = '404'
         break
+      case 400:
+        page = '400'
+        break
     }
     res.status(err.status || 500)
     res.render(`errors/${page}.html`, { error: err })

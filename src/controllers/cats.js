@@ -26,3 +26,21 @@ export function add (req, res) {
     .then(() => { res.redirect('/cats') })
 }
 
+export function updatePage (req, res) {
+  cats
+    .get(req.params.id)
+    .then((data) => { res.render('update-cat', { cat: data }) })
+}
+
+export function update (req, res) {
+  cats
+    .update(req.body)
+    .then(() => { res.redirect('/cats') })
+}
+
+export function remove (req, res) {
+  cats
+    .remove(req.params.id)
+    .then(() => { res.redirect('/cats') })
+}
+
