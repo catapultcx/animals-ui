@@ -25,3 +25,11 @@ export function add (req, res) {
         .create(req.body)
         .then(() => { res.redirect('/animals') })
 }
+
+export function deleteAnimal (req, res) {
+    animals
+        .delete(req.params.id)
+        .then(() => {
+            res.redirect('/animals') })
+}
+

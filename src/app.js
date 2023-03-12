@@ -7,6 +7,7 @@ import cats from './routes/cats.js'
 import index from './routes/index.js'
 import { initialiseErrors } from './errors.js'
 import animals from "./routes/animals.js";
+import methodOverride from 'method-override';
 
 const app = express()
 const govkukFrontendPath = 'node_modules/govuk-frontend'
@@ -18,6 +19,7 @@ nunjucks.configure([
 
 app.set('view engine', 'html')
 
+app.use(methodOverride('_method'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(formData.parse({}))
