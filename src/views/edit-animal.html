@@ -6,6 +6,7 @@
     <h1 class="govuk-heading-l">Edit Animal</h1>
 
     <form action="/animals/{{animal.id}}?_method=PUT" method="post">
+        <input type="hidden" name="id" value="{{animal.id}}">
         <div class="govuk-form-group">
             <label class="govuk-label" for="type">
                 Type

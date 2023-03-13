@@ -12,6 +12,14 @@ describe('/', function () {
       })
   })
 
+  it('should get filtered animals', function () {
+    return request(app)
+        .get('/animals?type=sometype&name=someone&colour=red&description=desc')
+        .expect(200)
+        .then(data => {
+          expect(data.text).toContain('Animals')
+        })
+  })
   it('should get an animal', function () {
     return request(app)
       .get('/animals/123')

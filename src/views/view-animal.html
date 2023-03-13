@@ -6,7 +6,6 @@
     <h1 class="govuk-heading-l">Animal</h1>
 
     <table class="govuk-table">
-        <caption class="govuk-table__caption">Animal</caption>
         <tbody class="govuk-table__body">
 
         <tr class="govuk-table__row">
@@ -15,12 +14,8 @@
         </tr>
 
         <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Group</th>
-            <td class="govuk-table__cell">
-                {% if animal.group is defined %}
-                    {{ animal.group.charAt(0) + animal.group.slice(1).toLowerCase() }}
-                {% endif %}
-            </td>
+            <th scope="row" class="govuk-table__header">Type</th>
+            <td class="govuk-table__cell">{{ animal.type }}</td>
         </tr>
 
         <tr class="govuk-table__row">
@@ -29,8 +24,10 @@
         </tr>
 
         <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Type</th>
-            <td class="govuk-table__cell">{{ animal.type }}</td>
+            <th scope="row" class="govuk-table__header">Group</th>
+            <td class="govuk-table__cell">
+                {{ animal.group | capitalize }}
+            </td>
         </tr>
 
         <tr class="govuk-table__row">
@@ -40,9 +37,9 @@
         </tbody>
     </table>
     <a class="govuk-button" href="/animals/edit/{{animal.id}}">Edit</a>
-    </form>
     <form action="/animals/{{animal.id}}?_method=DELETE" method="post">
         <button class="govuk-button" type="submit">Delete</button>
     </form>
 </div>
+
 {% endblock %}

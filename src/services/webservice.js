@@ -6,9 +6,11 @@ class WebService {
     this.agent = superagent
   }
 
-  all () {
+  all (filters) {
+    const searchParams = new URLSearchParams(filters)
+    const url = `${this.url}?${searchParams.toString()}`;
     return this.agent
-      .get(this.url)
+      .get(url)
       .then((data) => { return data.body })
   }
 

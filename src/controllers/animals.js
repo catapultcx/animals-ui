@@ -5,9 +5,26 @@ import Animals from '../services/animals.js'
 const animals = new Animals(process.env.API_URL)
 
 export function all (req, res) {
+    const filters = {};
+    if (req.query.type) {
+        filters.type = req.query.type;
+    }
+
+    if (req.query.name) {
+        filters.name = req.query.name;
+    }
+
+    if (req.query.colour) {
+        filters.colour = req.query.colour;
+    }
+
+    if (req.query.description) {
+        filters.description = req.query.description;
+    }
+
     animals
-        .all()
-        .then((data) => { res.render('animals', { animals: data }) })
+        .all(filters)
+        .then((data) => { res.render('animals', { animals: data, filters }) })
 }
 
 export function get (req, res) {
