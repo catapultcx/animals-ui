@@ -7,22 +7,22 @@ const cats = new Cats("http://localhost:8080/api/1")
 export function all (req, res) {
   cats
     .all()
-    .then((data) => { res.render('cats', { cats: data }) })
+    .then((data) => { res.render('cats/cats', { cats: data }) })
 }
 
 export function get (req, res) {
   cats
     .get(req.params.id)
-    .then((data) => { res.render('view-cat', { cat: data }) })
+    .then((data) => { res.render('cats/view-cat', { cat: data }) })
 }
 
 export function addPage (req, res) {
-  res.render('add-cat')
+  res.render('cats/add-cat')
 }
 
 export function add (req, res) {
   cats
     .create(req.body)
-    .then(() => { res.redirect('/cats') })
+    .then((data) => { res.redirect('/cats') })
 }
 

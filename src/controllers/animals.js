@@ -7,17 +7,17 @@ const animals = new Animals("http://localhost:8080/api/1")
 export function all (req, res) {
   animals
     .all()
-    .then((data) => { res.render('animals', { animals: data }) })
+    .then((data) => { res.render('animals/animals', { animals: data }) })
 }
 
 export function get (req, res) {
   animals
     .get(req.params.id)
-    .then((data) => { res.render('view-animal', { animal: data }) })
+    .then((data) => { res.render('animals/view-animal', { animal: data }) })
 }
 
 export function addPage (req, res) {
-  res.render('add-animal')
+  res.render('animals/add-animal')
 }
 
 export function add (req, res) {

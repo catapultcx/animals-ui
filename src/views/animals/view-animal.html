@@ -18,7 +18,18 @@
             <th scope="row" class="govuk-table__header">Description</th>
             <td class="govuk-table__cell">{{ animal.description }}</td>
         </tr>
-        </tbody>
+
+        <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Color</th>
+            <td class="govuk-table__cell">{{ animal.color }}</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Type</th>
+            <td class="govuk-table__cell">{{ animal.type }}</td>
+        </tr>
+
+    </tbody>
     </table>
 </div>
 {% endblock %}
