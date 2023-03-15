@@ -2,7 +2,7 @@ import { config } from 'dotenv'
 import Cats from '../../src/services/cats.js'
 
 config()
-const service = new Cats(process.env.API_URL)
+const service = new Cats("http://localhost:8080/api/1")
 let created
 
 let item = { name: 'Tom', description: 'Friend of Jerry' }

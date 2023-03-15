@@ -2,7 +2,7 @@ import { config } from 'dotenv'
 config()
 
 import Cats from '../services/cats.js'
-const cats = new Cats(process.env.API_URL)
+const cats = new Cats("http://localhost:8080/api/1")
 
 export function all (req, res) {
   cats

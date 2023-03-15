@@ -12,7 +12,7 @@ class WebService {
       .then((data) => { return data.body })
   }
 
-  get (id) {
+  get (id) {   
     return this.agent
       .get(`${this.url}/${id}`)
       .then((data) => { return data.body })
