@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="govuk-width-container app-site-width-container">
+
+    <h1 class="govuk-heading-l">Edit an Animal</h1>
+    
+    <form action="/animals/update/{{ animal.id }}" method="post">
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="name">
+                Name
+            </label>
+            <input class="govuk-input" id="name" name="name" type="text" value="{{ animal.name }}" spellcheck="false" required>
+        </div>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="description">
+                Description
+            </label>
+            <input class="govuk-input" id="description" name="description" type="text" value="{{ animal.description }}" spellcheck="false" required>
+        </div>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="color">
+                Color
+            </label>
+            <input class="govuk-input" id="color" name="color" type="text" value="{{ animal.color }}" spellcheck="false" required>
+        </div>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="type">
+                Type
+            </label>            
+            <select class="govuk-select" id="type" name="type" required>
+                <option value="{{ animal.type }}" selected>Choose type</option>
+                <option value="AMPHIBIAN">AMPHIBIAN</option>
+                <option value="BIRD">BIRD</option>
+                <option value="FISH">FISH</option>
+                <option value="INVERTEBRATE">INVERTEBRATE</option>
+                <option value="MAMMALS">MAMMALS</option>
+                <option value="REPTILES">REPTILES</option>
+            </select>                        
+        </div>
+        <button class="govuk-button" type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}

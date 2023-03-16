@@ -32,4 +32,14 @@ export function remove (req, res) {
     .then(() => { res.redirect('/animals') })
 }
 
+export function updatePage (req, res) {
+  animals
+    .get(req.params.id)
+    .then((data) => { res.render('animals/edit-animal', { animal: data }) })
+}
 
+export function update (req, res) {
+  animals
+    .update(req.params.id, req.body)
+    .then(() => { res.redirect('/animals') })
+}

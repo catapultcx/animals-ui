@@ -28,10 +28,16 @@ class WebService {
   delete (id) {    
     return this.agent
       .delete(`${this.url}/${id}`)
-      .then(() => {
-        return
-      })       
+      .then(() => { return })       
   }
+
+  update (id, item) {    
+    return this.agent
+      .put(`${this.url}/${id}`)
+      .send(item)
+      .then(() => { return }) 
+  }
+
 }
 
 export default WebService

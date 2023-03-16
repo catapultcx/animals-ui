@@ -43,4 +43,20 @@ describe('/', function () {
       .expect(302)
   })
 
+  it('should get update page', function () {
+    return request(app)
+      .get('/animals/update/123')
+      .expect(200)
+      .then(data => {
+        expect(data.text).toContain('Edit an Animal')
+      })
+  })
+
+  it('should update an animal', function () {
+    return request(app)
+      .post('/animals/update/123')
+      .expect(302)
+      .send({ name: 'Cobra', description: 'Black Cobra', color: 'black', type: 'REPTILES' })
+  })
+
 })

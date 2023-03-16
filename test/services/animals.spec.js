@@ -38,6 +38,10 @@ describe('animals', function () {
     })
   })
 
+  it('update an animal', function () {
+    return service.update(created.id, animal).end
+  })
+
   it('delete an animal', function () {
     return service.delete()
     .end
