@@ -28,17 +28,22 @@
             <label class="govuk-label" for="type">
                 Type
             </label>            
-            <select class="govuk-select" id="type" name="type" required>
-                <option value="{{ animal.type }}" selected>Choose type</option>
+            <select class="govuk-select" id="type" name="type" required>                                
                 <option value="AMPHIBIAN">AMPHIBIAN</option>
                 <option value="BIRD">BIRD</option>
                 <option value="FISH">FISH</option>
                 <option value="INVERTEBRATE">INVERTEBRATE</option>
                 <option value="MAMMALS">MAMMALS</option>
                 <option value="REPTILES">REPTILES</option>
-            </select>                        
+            </select>
+           
         </div>
         <button class="govuk-button" type="submit">Submit</button>
     </form>
 </div>
+<script>
+    window.addEventListener("load", function(){
+        document.getElementById("type").value = "{{ animal.type }}"
+    });
+</script>
 {% endblock %}
