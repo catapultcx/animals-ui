@@ -31,5 +31,10 @@
 
     </tbody>
     </table>
+    <form action="/animals/{{ animal.id }}" method="post">
+        <button class="govuk-button govuk-button--warning" data-module="govuk-button" type="submit">
+            Delete animal
+        </button>
+    </form>
 </div>
 {% endblock %}

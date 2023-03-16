@@ -36,4 +36,11 @@ describe('/', function () {
       .expect(302)
       .send({ name: 'Test animal', description: 'Test description', color: 'white', type: 'AMPHIBIAN' })
   })
+
+  it('should delete an animal', function () {
+    return request(app)
+      .post('/animals/123')
+      .expect(302)
+  })
+
 })

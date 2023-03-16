@@ -37,4 +37,10 @@ describe('animals', function () {
       expect(data.length).toBeGreaterThan(0)
     })
   })
+
+  it('delete an animal', function () {
+    return service.delete()
+    .end
+  })
+
 })

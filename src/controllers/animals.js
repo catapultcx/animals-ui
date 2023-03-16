@@ -26,3 +26,10 @@ export function add (req, res) {
     .then(() => { res.redirect('/animals') })
 }
 
+export function remove (req, res) {
+  animals
+    .delete(req.params.id)
+    .then(() => { res.redirect('/animals') })
+}
+
+
