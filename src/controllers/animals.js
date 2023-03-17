@@ -2,7 +2,7 @@ import { config } from 'dotenv'
 config()
 
 import Animals from '../services/animals.js'
-const animals = new Animals("http://localhost:8080/api/1")
+const animals = new Animals(process.env.API_URL || "http://localhost:8080/api/1")
 
 export function all (req, res) {
   animals
