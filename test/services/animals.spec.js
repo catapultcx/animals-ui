@@ -6,6 +6,7 @@ const service = new Animals("http://localhost:8080/api/1")
 let created
 
 let animal = { name: 'Carey', description: 'a caring cow', color: 'brown', type: 'MAMMALS' }
+let update = { name: 'scarey', description: 'a scary snake', color: 'dark', type: 'REPTILES' }
 
 describe('animals', function () {
 
@@ -39,12 +40,25 @@ describe('animals', function () {
   })
 
   it('update an animal', function () {
-    return service.update(created.id, animal).end
+    service.update(created.id, update).then(() => {
+    service.get(created.id).then((data) => {
+      expect(data.name).toEqual(update.name)
+      expect(data.description).toEqual(update.description)
+      expect(data.color).toEqual(update.color)
+      expect(data.type).toEqual(update.type)
+      })
+    })
   })
 
   it('delete an animal', function () {
     return service.delete()
     .end
+  })
+
+  it('filter animals by name, color, desc, type', function () {
+    return service.filter(created).then((data) => {
+      expect(data.length).toBeGreaterThan(0)
+    })
   })
 
 })

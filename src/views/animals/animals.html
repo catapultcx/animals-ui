@@ -5,8 +5,36 @@
 
     <h1 class="govuk-heading-l">Animals</h1>
 
-    <a class="govuk-button" href="/animals/add">Add an Animal</a>
+    <form action="/animals/filter" method="get">
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="name">
+            Filter by name
+            </label>
+            <input class="govuk-input govuk-input--width-10" id="name" name="name" type="text">
 
+            <label class="govuk-label" for="color">
+            Filter by color
+            </label>
+            <input class="govuk-input govuk-input--width-10" id="color" name="color" type="text">       
+        
+            <label class="govuk-label" for="description">
+            Filter by description
+            </label>
+            <input class="govuk-input govuk-input--width-10" id="description" name="description" type="text">
+            
+            <label class="govuk-label" for="type">
+            Filter by type
+            </label>
+            <input class="govuk-input govuk-input--width-10" id="type" name="type" type="text">
+        </div>    
+        <div class="govuk-button-group">
+            <button class="govuk-button govuk-button--secondary" data-module="govuk-button" type="submit">
+                Filter
+              </button>                         
+        </div>    
+     
+    </form>   
+    <a class="govuk-button" href="/animals/add">Add an Animal</a>
     <table class="govuk-table">
         <caption class="govuk-table__caption">Animals</caption>
         <thead class="govuk-table__head">

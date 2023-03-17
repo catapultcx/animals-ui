@@ -38,6 +38,12 @@ class WebService {
       .then(() => { return }) 
   }
 
+  filter (item) {
+    return this.agent
+      .get(`${this.url}?name=${item.name}&color=${item.color}&description=${item.description}&type=${item.type}`)
+      .then((data) => { return data.body })
+  }
+
 }
 
 export default WebService

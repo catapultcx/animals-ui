@@ -43,3 +43,9 @@ export function update (req, res) {
     .update(req.params.id, req.body)
     .then(() => { res.redirect('/animals') })
 }
+
+export function filter (req, res) {
+  animals
+    .filter(req.query)
+    .then((data) => { res.render('animals/animals', { animals: data }) })
+}

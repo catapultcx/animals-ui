@@ -59,4 +59,13 @@ describe('/', function () {
       .send({ name: 'Cobra', description: 'Black Cobra', color: 'black', type: 'REPTILES' })
   })
 
+  it('should filter animals', function () {
+    return request(app)
+      .get('/animals/filter?name=&color=&description=&type=REPTILES')
+      .expect(200)
+      .then(data => {
+        expect(data.text).toContain('Filter by name')
+      })     
+  })
+
 })
