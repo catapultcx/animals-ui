@@ -20,7 +20,7 @@
     "express-form-data": "^2.0.18",
     "govuk-frontend": "^4.1.0",
     "http-errors": "^2.0.0",
-    "nunjucks": "^3.2.3",
+    "nunjucks": "^3.2.4",
     "superagent": "^7.1.3"
   },
   "devDependencies": {
